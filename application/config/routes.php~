@@ -54,4 +54,3 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 //test
 $route['testHeader/admin'] = 'testheader/admin';
-$route['testHeader/user'] = 'testheader/user';

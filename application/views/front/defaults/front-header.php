@@ -37,7 +37,6 @@ function writeCategory($categories){
 	}
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

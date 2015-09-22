@@ -60,5 +60,8 @@ $route['testHeader/user'] = 'testheader/user';
 
 //user 
 $route['home'] = 'front/Products/index';
+
+//admin
+$route['admin/products/add']="back/products/addProduct";
 //ajax-calls
 $route['products/getProducts'] = 'general/Ajax_products/getProducts';

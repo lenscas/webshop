@@ -1,10 +1,5 @@
 <?php
-class TestHeader extends CI_Controller {
-	public function __construct(){
-		parent::__construct();
-		$this->load->model("front/defaults.")
-		
-	}
+class Ajax_products extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('welcome_message');
@@ -24,5 +19,9 @@ class TestHeader extends CI_Controller {
 						);
 		$this->load->view("front/defaults/front-header.php",$testArray);
 		$this->load->view("front/defaults/front-footer.php");
+	}
+	public funtion getProducts(){
+		$this->load->model("general/gproducts_model.php");
+		echo $this->products_model->getProducts();
 	}
 }

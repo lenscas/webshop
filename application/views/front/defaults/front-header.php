@@ -112,10 +112,11 @@ function writeCategory($categories){
 						<p>some image here</p>
 					</div>
 					<div class="searchbar pull-right col-md-4">
-						<form>
+						<form action="<?php echo base_url('index.php/products/search')?>" method="post">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Search">
-								<span class="input-group-addon"><i class="fa fa-search"></i></span>
+								<input type="text" name="search" class="form-control" placeholder="Search">
+								<span class="input-group-addon"><button><i class="fa fa-search"></i> </button></span>
+
 							</div>
 						</form>
 					</div>

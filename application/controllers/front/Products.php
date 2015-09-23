@@ -11,5 +11,20 @@ class Products extends CI_Controller {
 		$this->load->view("front/defaults/front-footer.php");	
 	}
 
+	public function search(){
+		$this->load->model("general/Gproducts_model");
+		$post=$this->input->post();
+		if(! $post){
+			redirect("/home","refresh");
+		}
+		if(! $post['search']){
+			redirect("/home","refresh");
+		}
+		$data['search']=$this->Gproducts_model->search($post['search']);
+		$this->load->view("front/products/search.php",$data);
+		$this->load->view("front/defaults/front-footer.php");
+
+	}
+
 }
 ?>

@@ -2,7 +2,7 @@
 <!--products -->
 	<div id="templateProducts">
 		<div class="col-sm-4 col-lg-4 col-md-4 pagination-item shownProduct">
-			<div class="thumbnail"> 
+			<div class="thumbnail" style="height:247px; overflow:hidden"> 
 				<img style="max-width:260px!important;height:150px;width:auto;float:center" src="<?php echo base_url("application/assets/products/1test.gif")?>"></img>
 				<div class="caption">
 					<span class="pull-right">

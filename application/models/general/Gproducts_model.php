@@ -30,6 +30,15 @@ class Gproducts_model extends CI_Model {
 		}
 		return $result;
 	}
+	public function getProductData($id){
+		$this->db->select('*');
+		$this->db->from("products");
+		$this->db->where("Id",$id);
+		$query=$this->db->get();
+		$result=$query->row_array();
+		$result["stock"]=$this->getStock($id);
+		return $result;
+	}
 
 }
 ?>

@@ -66,6 +66,7 @@ $route['testHeader/user'] = 'testheader/user';
 
 	//cart
 		$route['cart/add/(:any)']	=	'front/Cart/add/$1';
+		$route['cart/view']			=	'front/Cart/seeCart';
 //admin
 	//viewing products
 	

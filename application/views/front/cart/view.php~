@@ -26,7 +26,7 @@
 									<td><?php echo $value['Name'] ?> </td>
 									<td class="want"><?php echo $value['want']?></td>
 									<td id="product<?php echo $value["Id"]?>">
-										<button class="btn btn-danger subtract">-</button>
+										<button class="btn btn-danger remove">-</button>
 										<button class="btn btn-success add">+</button>
 									</td>
 									<td>&#8364; <?php echo $value['Sell_price'] ?></td>
@@ -60,38 +60,19 @@
 	</div>
 </div>
 <script>
-	function changeWant(way,element){
-		var text= $(element).html()
-		if(way=="up"){
-			$(element).empty().html(Number(text)+1)
-		} else {
-			$(element).empty().html(Number(text)-1)
-		}
-	}
-	function returnId(element){
-		var id=$(element).parent().attr("id")
-		var cleanId=id.replace("product","")
-		return [id,cleanId]
-	}
 	$(".add").on("click",function(){
-		var idList=returnId(this)
+		var id=$(this).parent().attr("id")
+		var cleanId=id.replace("product","")
 		$.ajax({
-			url:"<?php echo base_url("index.php/cart/ajax/add")?>/"+idList[1],
+			url:"<?php echo base_url("index.php/cart/ajax/add")?>/"+cleanId,
 			success:function (){
-				var element= $("#"+idList[0]).parent().find(".want")
-				changeWant("up",element)
+				var element= $("#id").parent().find(".want")
+				console.log(element)
+				var text= $(element).text()
+				$(element).empty().html(Number(text)+1)
+				console.log("awesome")
 			}
 			
-		})
-	})
-	$(".subtract").on("click",function(){
-		var idList=returnId(this)
-		$.ajax({
-		url: "<?php echo base_url("index.php/cart/ajax/subtract")?>/"+idList[1],
-		success:function (){
-				var element= $("#"+idList[0]).parent().find(".want")
-				changeWant("down",element)
-			}
 		})
 	})
 

@@ -2,18 +2,20 @@
 <!--products -->
 	<div id="templateProducts">
 		<div class="col-sm-4 col-lg-4 col-md-4 pagination-item shownProduct">
-			<div class="thumbnail" style="height:247px; overflow:hidden"> 
-				<img style="max-width:260px!important;height:150px;width:auto;float:center" src="<?php echo base_url("application/assets/products/1test.gif")?>"></img>
-				<div class="caption">
-					<span class="pull-right">
-						<h4 class="price"></h4>
-						<h5 class="stock"></h5>
-					</span>
-					<h4 class="name"></h4>
-					<div class="description">
+			<a hreff="" class="link">
+				<div class="thumbnail" style="height:247px; overflow:hidden"> 
+					<img style="max-width:260px!important;height:150px;width:auto;float:center" src="<?php echo base_url("application/assets/products/1test.gif")?>"></img>
+					<div class="caption">
+						<span class="pull-right">
+							<h4 class="price"></h4>
+							<h5 class="stock"></h5>
+						</span>
+						<h4 class="name"></h4>
+						<div class="description">
+						</div>
 					</div>
 				</div>
-			</div>
+			</a>
 		</div>
 	</div>
 </div>
@@ -45,7 +47,9 @@
 				$(element).find(".stock").empty().html("Voorraad: "+value.stock)
 				$(element).find(".name").empty().html(value.Name)
 				$(element).find(".description").empty().html(value.Description)
+				$(element).find(".link").attr("href","<?php echo base_url("index.php/product/") ?>/"+value.Id)
 				$(element).find(".shownProduct").clone().appendTo("#row"+lastId)
+				
 				times=times+1
 			})
 		}

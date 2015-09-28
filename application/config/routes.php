@@ -60,13 +60,16 @@ $route['testHeader/user'] = 'testheader/user';
 
 //user 
 	//looking at products
-		$route['home'] 				=	'front/Products/index';
+		$route['home']				=	'front/Products/index';
 		$route['product/(:any)']	=	'front/Products/product/$1';
 		$route['products/search']	=	'front/Products/search';
 
 	//cart
 		$route['cart/add/(:any)']	=	'front/Cart/add/$1';
 		$route['cart/view']			=	'front/Cart/seeCart';
+	//cart-ajax calls
+		$route['cart/ajax/add/(:any)']	=	'front/Cart_ajax/add/$1';
+		$route['cart/ajax/subtract/(:any)']	=	'front/Cart_ajax/subtract/$1';
 //admin
 	//viewing products
 	

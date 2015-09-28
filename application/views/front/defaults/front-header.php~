@@ -37,7 +37,6 @@ function writeCategory($categories){
 	}
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +88,7 @@ function writeCategory($categories){
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav pull-right">
                     <li>
-                        <a href="#">Winkelmandje</a>
+                        <a href="<?php echo base_url("index.php/cart/view")?>">Winkelmandje</a>
                     </li>
                     <li>
                         <a href="#"><?php echo $accountText ?></a>
@@ -106,8 +105,6 @@ function writeCategory($categories){
     
     
     <div class="container">
-
-        
 		<div class="row">
 			<div class="box">
 				<div class="box-body">
@@ -115,10 +112,11 @@ function writeCategory($categories){
 						<p>some image here</p>
 					</div>
 					<div class="searchbar pull-right col-md-4">
-						<form>
+						<form action="<?php echo base_url('index.php/products/search')?>" method="post">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Search">
-								<span class="input-group-addon"><i class="fa fa-search"></i></span>
+								<input type="text" name="search" class="form-control" placeholder="Search">
+								<span class="input-group-addon"><button><i class="fa fa-search"></i> </button></span>
+
 							</div>
 						</form>
 					</div>

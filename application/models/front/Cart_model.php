@@ -4,10 +4,34 @@ class cart_model extends CI_Model {
 		//get the array with the products that are currently in the cart
 		$cart=$this->getCart();
 		//look if the product is already in the cart, if it is increase the amount by 1 else add it and said the amount to 1
-		if(isset($cart[$productId])){
-			$cart[$productId]++;
-		}else {
-			$cart[$productId]=1;
+		$this->load->model("general/Gproducts_model");
+		$data=$this->Gproducts_model->getProductData($productId);
+		if(isset($data['Id'])){
+			if(isset($cart[$productId])){
+				$cart[$productId]++;
+			}else {
+				$cart[$productId]=1;
+			}
+		}
+		//update the session
+		$this->session->set_userdata("cart",$cart);
+		//update the Database
+		$this->updateCartDB($cart);
+	}
+	public function subtractFromCart($productId){
+		//get the array with the products that are currently in the cart
+		$cart=$this->getCart();
+		//look if the product is already in the cart, if it is increase the amount by 1 else add it and said the amount to 1
+		$this->load->model("general/Gproducts_model");
+		$data=$this->Gproducts_model->getProductData($productId);
+		if(isset($data['Id'])){
+			if(isset($cart[$productId])){
+				if($cart[$productId]>2){
+					$cart[$productId]=$cart[$productId]-1;
+				} else {
+					unset($cart[$productId]);
+				}
+			}
 		}
 		//update the session
 		$this->session->set_userdata("cart",$cart);
@@ -56,7 +80,6 @@ class cart_model extends CI_Model {
 				$query=$this->db->get();
 				$cart=$query->row_array();
 			}
-			
 			
 		}
 		return $cart;

@@ -1,5 +1,5 @@
 <?php
-Class Guser_model extends CI_Model {
+Class Gusers_model extends CI_Model {
 	public function Register($data, $sort){
 		foreach ($data as $key => $value) {
 				if ($value == null) {
@@ -12,7 +12,7 @@ Class Guser_model extends CI_Model {
 			return $error;
 		}
 
-		if ($sort == 'user') {
+		if ($sort == 'users') {
 			$data['Id']=$this->GenId();
 		}
 
@@ -25,7 +25,7 @@ Class Guser_model extends CI_Model {
 		$this->db->from('users');
 		$query = $this->db->get();
 		$result = $query->row_array();
-		return sha1($result."/".random_string("alpha", 4)."/".time());
+		return sha1($result['counter']."/".random_string("alpha", 4)."/".time());
 	}
 
 	

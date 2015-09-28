@@ -61,7 +61,8 @@ $route['testHeader/user'] = 'testheader/user';
 //user 
 $route['home'] = 'front/Products/index';
 
-
+//register
+$route['register'] = 'front/User/Register_User';
 
 //search
 $route['products/search'] = 'front/Products/search';

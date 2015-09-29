@@ -10,6 +10,8 @@
 		public function Register_User(){
 			$this->load->model("general/Gusers_model");
 			$posted = true;
+			$error = null;
+
 			if ($this->input->post()) {
 				$error = $this->Gusers_model->Register($this->input->post(),'users');
 			} else {
@@ -17,7 +19,7 @@
 			}
 
 			if (isset($error)|| $posted == false) {
-				$this->load->view('front/users/register_form.php');
+				$this->load->view('front/users/register_form.php', array('error' => $error));
 			}else{
 				$this->load->view('front/users/register_success.php');
 			}

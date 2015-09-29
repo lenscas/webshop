@@ -2,8 +2,8 @@
 Class Gusers_model extends CI_Model {
 	public function Register($data, $sort){
 		foreach ($data as $key => $value) {
-				if ($value == null) {
-					$error = "Er is een veld niet ingevuld!";
+				if ($value == "") {
+					$error = "Niet alle velden zijn ingevuld!";
 				break;
 				}
 			}

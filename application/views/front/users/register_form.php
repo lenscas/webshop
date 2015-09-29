@@ -47,7 +47,7 @@
 					}
 				?>
 
-				<button class="btn btn-success pull-right" type="submit"> <?php echo (isset($Username) ? "Weizigen" : "Registreren");?>" </button>
+				<button class="btn btn-success pull-right" type="submit"> <?php echo (isset($Username) ? "Weizigen" : "Registreren");?> </button>
 			</div>
 		</form>
 </div>

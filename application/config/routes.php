@@ -59,15 +59,30 @@ $route['testHeader/admin'] = 'testheader/admin';
 $route['testHeader/user'] = 'testheader/user';
 
 //user 
-$route['home'] = 'front/Products/index';
 
-//register
-$route['register'] = 'front/User/Register_User';
+	//login
+		$route['login'] 	=	'front/User/login_User';
+		$route['register']	=	'front/User/Register_User';
+		$route['editUser']	=	"front/User/editUser";
 
-//search
-$route['products/search'] = 'front/Products/search';
+	//looking at products
+		$route['home']				=	'front/Products/index';
+		$route['product/(:any)']	=	'front/Products/product/$1';
+		$route['products/search']	=	'front/Products/search';
+
+	//cart
+		$route['cart/add/(:any)']	=	'front/Cart/add/$1';
+		$route['cart/view']			=	'front/Cart/seeCart';
+	//cart-ajax calls
+		$route['cart/ajax/add/(:any)']	=	'front/Cart_ajax/add/$1';
+		$route['cart/ajax/subtract/(:any)']	=	'front/Cart_ajax/subtract/$1';
 
 //admin
-$route['admin/products/add']="back/Products/addProduct";
-//ajax-calls
-$route['products/getProducts'] = 'general/Ajax_products/getProducts';
+	//viewing products
+	
+	//editing the products list
+		$route['admin/products/add']="back/Products/addProduct";
+
+//general ajax-calls
+	//products
+		$route['products/getProducts'] = 'general/Ajax_products/getProducts';

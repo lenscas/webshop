@@ -1,10 +1,53 @@
 <div class="col-md-9">
-	<form method = "post">
-		<input type="text" name="Email">
-		<input type="date" name="Birthdate">
-		<input type="text" name="Username">
-		<input type="password" name="Password">
-		<input type="text" name="Gender">
-		<button>Submit</button>
-	</form>
+	<?php
+		if ($error != null) {
+	?> 
+			<div class="alert alert-danger" role="alert"> <?php echo $error ?> </div>
+	<?php
+		}
+	?>
+
+		<form method = "post">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label>Gebruikersnaam</label>
+				 	<input type="text" name = "Username" class="form-control" value="<?php echo (isset($Username) ? $Username : "");?>">
+				</div>
+				<div class="form-group">
+					<label>Wachtwoord</label>
+				 	<input type="password" name = "Password" class="form-control" >
+				</div>
+				<div class="form-group">
+					<label>Herhaal Wachtwoord</label>
+				 	<input type="password" name = "PasswordCheck" class="form-control">
+				</div>
+			</div>
+			<div class="col-lg-6">
+
+				<div class="form-group">
+					<label>Geboortedatum</label>
+				 	<input type="date" name = "Birthdate" class="form-control" value="<?php echo (isset($Birthdate) ? $Birthdate : "");?>">
+				</div>
+				<div class="form-group">
+					<label>Email</label>
+				 	<input type="email" name = "Email" class="form-control" value="<?php echo (isset($Email) ? $Email : "");?>">
+				</div>
+				
+				<?php 
+					if(! isset($Gender)){
+				?>
+						<div class="form-group">
+							<label>Gender</label>	      
+						    <select class="form-control" name="Gender">
+						        <option value="1">Man</option>
+						        <option value="0">Vrouw</option>
+						    </select>
+						</div>
+				<?php
+					}
+				?>
+
+				<button class="btn btn-success pull-right" type="submit"> <?php echo (isset($Username) ? "Weizigen" : "Registreren");?>" </button>
+			</div>
+		</form>
 </div>

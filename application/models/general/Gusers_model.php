@@ -8,13 +8,21 @@ Class Gusers_model extends CI_Model {
 				}
 			}
 
+		if (!isset($error) && $data['Password'] != $data['PasswordCheck'] ) {
+				$error = "Wachtwoorden komen niet overeen.";
+		}	
+
 		if (isset($error)) {
 			return $error;
 		}
 
+		unset($data['PasswordCheck']);
+
 		if ($sort == 'users') {
 			$data['Id']=$this->GenId();
 		}
+
+		
 
 		$this->db->insert($sort, $data);
 	}

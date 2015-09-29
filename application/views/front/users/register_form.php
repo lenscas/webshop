@@ -18,11 +18,16 @@
 				 	<input type="password" name = "Password" class="form-control">
 				</div>
 				<div class="form-group">
-					<label>Geboortedatum</label>
-				 	<input type="date" name = "Birthdate" class="form-control">
+					<label>Herhaal Wachtwoord</label>
+				 	<input type="password" name = "PasswordCheck" class="form-control">
 				</div>
 			</div>
 			<div class="col-lg-6">
+
+				<div class="form-group">
+					<label>Geboortedatum</label>
+				 	<input type="date" name = "Birthdate" class="form-control">
+				</div>
 				<div class="form-group">
 					<label>Email</label>
 				 	<input type="email" name = "Email" class="form-control">

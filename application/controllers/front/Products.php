@@ -23,7 +23,14 @@ class Products extends CI_Controller {
 		$data['search']=$this->Gproducts_model->search($post['search']);
 		$this->load->view("front/products/search.php",$data);
 		$this->load->view("front/defaults/front-footer.php");
-
+	}
+	public function product($id){
+		$this->load->model("general/Gproducts_model");
+		$productInfo=$this->Gproducts_model->getProductData($id);
+		/*print_r($productInfo);
+		exit(); */
+		$this->load->view("front/products/product.php",$productInfo);
+		$this->load->view("front/defaults/front-footer.php");	
 	}
 
 }

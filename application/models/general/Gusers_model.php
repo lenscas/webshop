@@ -22,6 +22,11 @@ Class Gusers_model extends CI_Model {
 			$data['Id']=$this->GenId();
 		}
 
+
+		$this->load->library('encryption');
+
+		$data['Password']=$this->encryption->encrypt($data['Password']);
+
 		$this->db->insert($sort, $data);
 	}
 
@@ -41,7 +46,6 @@ Class Gusers_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->row_array();
 	}
-	public function 
 	
 }
 ?>

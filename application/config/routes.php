@@ -59,10 +59,20 @@ $route['testHeader/admin'] = 'testheader/admin';
 $route['testHeader/user'] = 'testheader/user';
 
 //user 
+<<<<<<< HEAD
 	//looking at products
 		$route['home']				=	'front/Products/index';
 		$route['product/(:any)']	=	'front/Products/product/$1';
 		$route['products/search']	=	'front/Products/search';
+=======
+$route['home'] = 'front/Products/index';
+
+//register
+$route['register'] = 'front/User/Register_User';
+
+//search
+$route['products/search'] = 'front/Products/search';
+>>>>>>> dev
 
 	//cart
 		$route['cart/add/(:any)']	=	'front/Cart/add/$1';

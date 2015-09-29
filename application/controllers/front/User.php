@@ -36,6 +36,7 @@
 				$this->load->view('front/users/register_form.php', array('error' => $error));
 			}else{
 				$this->load->view('front/users/register_success.php');
+				$this->output->set_header('refresh:5;url=login');
 			}
 
 			$this->load->view('front/defaults/front-footer.php');
@@ -45,17 +46,20 @@
 			if(! $this->session->has_userData("userId")){
 				redirect("home");
 			}
+			$this->load->model("general/Gusers_model");
 			if($this->input->post()){
-				$this->load->model("general/Gusers_model");
-				$this->Gusers_model->editUser($this->input-post());
+				
+				$this->Gusers_model->editUser($this->input->post(),$this->session->userId);
 			}
 			$data=$this->Gusers_model->getAllUserData($this->session->userId);
+			$data["error"]=null;
 			$this->load->view("front/users/register_form",$data);
 			$this->load->view('front/defaults/front-footer.php');
 			
 		
 		}
-	}
+
+}
 
 
 ?>

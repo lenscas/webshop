@@ -22,6 +22,11 @@ Class Gusers_model extends CI_Model {
 			$data['Id']=$this->GenId();
 		}
 
+
+		$this->load->library('encryption');
+
+		$data['Password']=$this->encryption->encrypt($data['Password']);
+
 		$this->db->insert($sort, $data);
 	}
 
@@ -41,7 +46,26 @@ Class Gusers_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->row_array();
 	}
-	public function 
+	public function editUser($data,$userId){
+		$updatePassword=false;
+		if($data['Password'] && $data['PasswordCheck']){
+			if($data['Password']==$data["PasswordCheck"]){
+				$updatePassword=true;
+				$error="Wachtwoord velden zijn niet hetzelfde";
+			}
+		}
+		foreach($data as $key => $value){
+			if($value==""){
+				unset($data[$key]);
+			}
+		}
+		if(! $updatePassword){
+			unset($data['Password']);
+		}
+		unset($data["PasswordCheck"]);
+		$this->db->where("Id",$userId);
+		$this->db->update("users",$data);
+	}
 	
 }
 ?>

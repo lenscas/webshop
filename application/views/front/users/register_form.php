@@ -29,6 +29,7 @@
 				 	<input type="date" name = "Birthdate" class="form-control" value="<?php echo (isset($Birthdate) ? $Birthdate : "");?>">
 				</div>
 				<div class="form-group">
+
 					<label>Email</label>
 				 	<input type="email" name = "Email" class="form-control" value="<?php echo (isset($Email) ? $Email : "");?>">
 				</div>
@@ -47,7 +48,7 @@
 					}
 				?>
 
-				<button class="btn btn-success pull-right" type="submit"> <?php echo (isset($Username) ? "Weizigen" : "");?>" </button>
+				<button class="btn btn-success pull-right" type="submit"> <?php echo (isset($Username) ? "Wijzigen" : "Registeren");?> </button>
 			</div>
 		</form>
 </div>

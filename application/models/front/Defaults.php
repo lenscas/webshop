@@ -11,7 +11,7 @@ class Defaults extends CI_Model {
 						"warningMessage"=>"this is a test error message",
 						"warningClass"=>"alert-success",
 						"warningVisible"=>true,
-						"logLink"=>$loglink
+						"logLink"=>$loglink,
 					);
 	}
 

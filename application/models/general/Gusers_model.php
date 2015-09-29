@@ -10,7 +10,13 @@ Class Gusers_model extends CI_Model {
 
 		if (!isset($error) && $data['Password'] != $data['PasswordCheck'] ) {
 				$error = "Wachtwoorden komen niet overeen.";
-		}	
+		
+		}
+
+		$this->load->model('front/User_Model');
+		if($this->User_Model->GetUserData($data['Username'], $data['Email'])){
+			$error = "Gebruiker en/of email is al in gebruik.";
+		}
 
 		if (isset($error)) {
 			return $error;
@@ -22,11 +28,8 @@ Class Gusers_model extends CI_Model {
 			$data['Id']=$this->GenId();
 		}
 
-
 		$this->load->library('encryption');
-
 		$data['Password']=$this->encryption->encrypt($data['Password']);
-
 		$this->db->insert($sort, $data);
 	}
 
@@ -38,6 +41,7 @@ Class Gusers_model extends CI_Model {
 		$result = $query->row_array();
 		return sha1($result['counter']."/".random_string("alpha", 4)."/".time());
 	}
+
 	public function getAllUserData($userId){
 		$this->db->select("*");
 		$this->db->from("users");

@@ -28,17 +28,19 @@
 				$times=0;
 			}?>
 			<div class="col-sm-4 col-lg-4 col-md-4 pagination-item shownProduct">
-				<div class="thumbnail" style="height:247px; overflow:hidden"> 
-					<img style="max-width:260px!important;height:150px;width:auto;float:center" src="<?php echo base_url($value['Picpath'])?>"></img>
-					<div class="caption">
-						<span class="pull-right">
-							<h4 class="price"><?php echo $value['Sell_price']?></h4>
-							<h5 class="stock"><?php echo $value['stock']?></h5>
-						</span>
-						<h4 class="name"><?php echo $value['Name']?></h4>
-						<div class="description"><?php echo $value['Description']?></div>
+				<a href="<?php echo base_url("index.php/product/".$value['Id'])?>">
+					<div class="thumbnail" style="height:247px; overflow:hidden"> 
+						<img style="max-width:260px!important;height:150px;width:auto;float:center" src="<?php echo base_url($value['Picpath'])?>"></img>
+						<div class="caption">
+							<span class="pull-right">
+								<h4 class="price"><?php echo $value['Sell_price']?></h4>
+								<h5 class="stock"><?php echo $value['stock']?></h5>
+							</span>
+							<h4 class="name"><?php echo $value['Name']?></h4>
+							<div class="description"><?php echo $value['Description']?></div>
+						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 		<?php 
 			$times++;

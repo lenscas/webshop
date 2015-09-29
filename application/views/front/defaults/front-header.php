@@ -93,8 +93,15 @@ function writeCategory($categories){
                     <li>
                         <a href="<?php echo base_url("index.php/".$logLink)?>"><?php echo $accountText ?></a>
                     </li>
-                    <li>
-                    </li>
+                    <?php 
+                    	if(! $registerHidden){
+                    ?>
+							<li>
+								<a href="<?php echo base_url("index.php/register")?>" >Registreren</a>
+							</li>
+		            <?php
+		            	}
+		            ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

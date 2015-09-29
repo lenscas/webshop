@@ -47,9 +47,10 @@ class cart_model extends CI_Model {
 		return $this->session->cart;
 	}
 	public function updateCartDB(){
+		/*
 		if($this->session->has_userdata("loggedIn")){
 			$this->db->update();
-		}
+		}*/
 	}
 	public function createCartId(){
 		$this->load->helper('string');
@@ -62,7 +63,7 @@ class cart_model extends CI_Model {
 	public function getCartDb(){
 		//get the user Id
 		$cart=array();
-		if($this->session->has_userdata("userId")){
+		/*if($this->session->has_userdata("userId")){
 			$userId=$this->session->userId;
 			//try to get the cart out of the database
 			$this->db->select("*");
@@ -81,7 +82,7 @@ class cart_model extends CI_Model {
 				$cart=$query->row_array();
 			}
 			
-		}
+		}*/
 		return $cart;
 	}
 }

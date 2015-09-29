@@ -7,20 +7,16 @@
 			$this->load->view("front/defaults/front-header.php",$data);
 		}
 
-		public function login_User(){
-			$this->load->model("general/Gusers_model");
-			$posted = true;
+		public function Login_user(){
+			$this->load->model("front/User_model");
+			$error=null;
 			if ($this->input->post()) {
-				$error = $this->Gusers_model->Register($this->input->post(),'users');
-			} else {
-				$posted = false;
-			}
-
-			if (isset($error)|| $posted == false) {
-				$this->load->view('front/users/register_form.php');
-			}else{
-				$this->load->view('front/users/register_success.php');
-			}
+				$error = $this->User_model->Login_user($this->input->post());
+				if(!$error){
+					redirect("home");
+				}
+			} 
+			$this->load->view('front/users/login_form.php', array('error' => $error));
 
 			$this->load->view('front/defaults/front-footer.php');
 		}

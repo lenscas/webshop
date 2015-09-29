@@ -22,8 +22,6 @@ Class Gusers_model extends CI_Model {
 			$data['Id']=$this->GenId();
 		}
 
-		
-
 		$this->db->insert($sort, $data);
 	}
 
@@ -35,7 +33,15 @@ Class Gusers_model extends CI_Model {
 		$result = $query->row_array();
 		return sha1($result['counter']."/".random_string("alpha", 4)."/".time());
 	}
-
+	public function getAllUserData($userId){
+		$this->db->select("*");
+		$this->db->from("users");
+		$this->db->where("Id",$userId);
+		$this->db->limit("1");
+		$query=$this->db->get();
+		return $query->row_array();
+	}
+	public function 
 	
 }
 ?>

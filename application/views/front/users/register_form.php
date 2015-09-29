@@ -11,11 +11,11 @@
 			<div class="col-lg-6">
 				<div class="form-group">
 					<label>Gebruikersnaam</label>
-				 	<input type="text" name = "Username" class="form-control">
+				 	<input type="text" name = "Username" class="form-control" value="<?php echo (isset($Username) ? $Username : "");?>">
 				</div>
 				<div class="form-group">
 					<label>Wachtwoord</label>
-				 	<input type="password" name = "Password" class="form-control">
+				 	<input type="password" name = "Password" class="form-control" >
 				</div>
 				<div class="form-group">
 					<label>Herhaal Wachtwoord</label>
@@ -26,22 +26,28 @@
 
 				<div class="form-group">
 					<label>Geboortedatum</label>
-				 	<input type="date" name = "Birthdate" class="form-control">
+				 	<input type="date" name = "Birthdate" class="form-control" value="<?php echo (isset($Birthdate) ? $Birthdate : "");?>">
 				</div>
 				<div class="form-group">
-					<label>Emaill</label>
-				 	<input type="email" name = "Email" class="form-control">
+					<label>Email</label>
+				 	<input type="email" name = "Email" class="form-control" value="<?php echo (isset($Email) ? $Email : "");?>">
 				</div>
 				
-				<div class="form-group">
-			        <label>Gender</label>	      
-		            <select class="form-control" name="Gender">
-		                <option value="1">Man</option>
-		                <option value="0">Vrouw</option>
-		            </select>
-		        </div>
+				<?php 
+					if(! isset($Gender)){
+				?>
+						<div class="form-group">
+							<label>Gender</label>	      
+						    <select class="form-control" name="Gender">
+						        <option value="1">Man</option>
+						        <option value="0">Vrouw</option>
+						    </select>
+						</div>
+				<?php
+					}
+				?>
 
-				<button class="btn btn-success pull-right" type="submit"> Registreren! </button>
+				<button class="btn btn-success pull-right" type="submit"> <?php echo (isset($Username) ? "Weizigen" : "");?>" </button>
 			</div>
 		</form>
 </div>

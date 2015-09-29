@@ -22,9 +22,11 @@ Class Gusers_model extends CI_Model {
 			$data['Id']=$this->GenId();
 		}
 
+
 		$this->load->library('encryption');
 
 		$data['Password']=$this->encryption->encrypt($data['Password']);
+
 		$this->db->insert($sort, $data);
 	}
 
@@ -36,7 +38,14 @@ Class Gusers_model extends CI_Model {
 		$result = $query->row_array();
 		return sha1($result['counter']."/".random_string("alpha", 4)."/".time());
 	}
-
+	public function getAllUserData($userId){
+		$this->db->select("*");
+		$this->db->from("users");
+		$this->db->where("Id",$userId);
+		$this->db->limit("1");
+		$query=$this->db->get();
+		return $query->row_array();
+	}
 	
 }
 ?>

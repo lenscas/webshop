@@ -7,6 +7,20 @@
 			$this->load->view("front/defaults/front-header.php",$data);
 		}
 
+		public function Login_user(){
+			$this->load->model("front/User_model");
+			$error=null;
+			if ($this->input->post()) {
+				$error = $this->User_model->Login_user($this->input->post());
+				if(!$error){
+					redirect("home");
+				}
+			} 
+			$this->load->view('front/users/login_form.php', array('error' => $error));
+
+			$this->load->view('front/defaults/front-footer.php');
+		}
+
 		public function Register_User(){
 			$this->load->model("general/Gusers_model");
 			$posted = true;
@@ -27,10 +41,23 @@
 
 			$this->load->view('front/defaults/front-footer.php');
 		}
-
-
+		public function editUser(){
+			//make sure only people that are logged in can visit the page
+			if(! $this->session->has_userData("userId")){
+				redirect("home");
+			}
+			if($this->input->post()){
+				$this->load->model("general/Gusers_model");
+				$this->Gusers_model->editUser($this->input-post());
+			}
+			$data=$this->Gusers_model->getAllUserData($this->session->userId);
+			$this->load->view("front/users/register_form",$data);
+			$this->load->view('front/defaults/front-footer.php');
+			
 		
-	}
+		}
+
+}
 
 
 ?>

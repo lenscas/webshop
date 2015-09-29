@@ -82,16 +82,16 @@ function writeCategory($categories){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Geen Idee</a>
+                <a class="navbar-brand" href="<?php echo base_url("index.php/home")?>">Geen Idee</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav pull-right">
                     <li>
-                        <a href="#">Winkelmandje</a>
+                        <a href="<?php echo base_url("index.php/cart/view")?>">Winkelmandje</a>
                     </li>
                     <li>
-                        <a href="#"><?php echo $accountText ?></a>
+                        <a href="<?php echo base_url("index.php/".$logLink)?>"><?php echo $accountText ?></a>
                     </li>
                     <li>
                     </li>

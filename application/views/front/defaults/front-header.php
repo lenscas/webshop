@@ -91,7 +91,7 @@ function writeCategory($categories){
                         <a href="<?php echo base_url("index.php/cart/view")?>">Winkelmandje</a>
                     </li>
                     <li>
-                        <a href="#"><?php echo $accountText ?></a>
+                        <a href="<?php echo base_url("index.php/".$logLink)?>"><?php echo $accountText ?></a>
                     </li>
                     <li>
                     </li>

@@ -59,20 +59,24 @@ $route['testHeader/admin'] = 'testheader/admin';
 $route['testHeader/user'] = 'testheader/user';
 
 //user 
+
+	//login
+		$route['login'] 	=	'front/User/login_User';
+		$route['register']	=	'front/User/Register_User';
+		$route['editUser']	=	"front/User/editUser";
+
 	//looking at products
 		$route['home']				=	'front/Products/index';
 		$route['product/(:any)']	=	'front/Products/product/$1';
 		$route['products/search']	=	'front/Products/search';
 
-	//login
-		$route['register']	=	'front/User/Register_User';
-		$route['editUser']	=	"front/User/editUser";
 	//cart
 		$route['cart/add/(:any)']	=	'front/Cart/add/$1';
 		$route['cart/view']			=	'front/Cart/seeCart';
 	//cart-ajax calls
 		$route['cart/ajax/add/(:any)']	=	'front/Cart_ajax/add/$1';
 		$route['cart/ajax/subtract/(:any)']	=	'front/Cart_ajax/subtract/$1';
+
 //admin
 	//viewing products
 	

@@ -7,6 +7,20 @@
 			$this->load->view("front/defaults/front-header.php",$data);
 		}
 
+		public function Login_user(){
+			$this->load->model("front/User_model");
+			$error=null;
+			if ($this->input->post()) {
+				$error = $this->User_model->Login_user($this->input->post());
+				if(!$error){
+					redirect("home");
+				}
+			} 
+			$this->load->view('front/users/login_form.php', array('error' => $error));
+
+			$this->load->view('front/defaults/front-footer.php');
+		}
+
 		public function Register_User(){
 			$this->load->model("general/Gusers_model");
 			$posted = true;

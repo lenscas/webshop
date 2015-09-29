@@ -2,15 +2,21 @@
 Class Gusers_model extends CI_Model {
 	public function Register($data, $sort){
 		foreach ($data as $key => $value) {
-				if ($value == null) {
-					$error = "Er is een veld niet ingevuld!";
+				if ($value == "") {
+					$error = "Niet alle velden zijn ingevuld!";
 				break;
 				}
 			}
 
+		if (!isset($error) && $data['Password'] != $data['PasswordCheck'] ) {
+				$error = "Wachtwoorden komen niet overeen.";
+		}	
+
 		if (isset($error)) {
 			return $error;
 		}
+
+		unset($data['PasswordCheck']);
 
 		if ($sort == 'users') {
 			$data['Id']=$this->GenId();
@@ -27,7 +33,15 @@ Class Gusers_model extends CI_Model {
 		$result = $query->row_array();
 		return sha1($result['counter']."/".random_string("alpha", 4)."/".time());
 	}
-
+	public function getAllUserData($userId){
+		$this->db->select("*");
+		$this->db->from("users");
+		$this->db->where("Id",$userId);
+		$this->db->limit("1");
+		$query=$this->db->get();
+		return $query->row_array();
+	}
+	public function 
 	
 }
 ?>

@@ -65,8 +65,8 @@ $route['testHeader/user'] = 'testheader/user';
 		$route['products/search']	=	'front/Products/search';
 
 	//login
-		$route['register'] = 'front/User/Register_User';
-
+		$route['register']	=	'front/User/Register_User';
+		$route['editUser']	=	"front/User/editUser";
 	//cart
 		$route['cart/add/(:any)']	=	'front/Cart/add/$1';
 		$route['cart/view']			=	'front/Cart/seeCart';

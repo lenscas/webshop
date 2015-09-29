@@ -36,6 +36,7 @@
 				$this->load->view('front/users/register_form.php', array('error' => $error));
 			}else{
 				$this->load->view('front/users/register_success.php');
+				$this->output->set_header('refresh:5;url=login');
 			}
 
 			$this->load->view('front/defaults/front-footer.php');
@@ -55,7 +56,8 @@
 			
 		
 		}
-	}
+
+}
 
 
 ?>

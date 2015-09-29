@@ -29,7 +29,7 @@
 				 	<input type="date" name = "Birthdate" class="form-control">
 				</div>
 				<div class="form-group">
-					<label>Email</label>
+					<label>Emaill</label>
 				 	<input type="email" name = "Email" class="form-control">
 				</div>
 				

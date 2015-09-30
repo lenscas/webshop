@@ -15,7 +15,7 @@ Class Gusers_model extends CI_Model {
 		if($birthdata['correct']){
 			$data['Birthdate']=$birthdata['date'];
 		} else {
-			$error="Er is geen geldige geboorte datum ingevuld";
+			$error="Er is geen geldige geboortedatum ingevuld";
 		}
 		if (isset($error)) {
 			return $error;

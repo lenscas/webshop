@@ -97,6 +97,15 @@ function writeCategory($categories){
                         <a href="<?php echo base_url("index.php/".$logLink)?>"><?php echo $accountText ?></a>
                     </li>
                     <?php 
+                    	if($logoutLink){
+                    ?>
+							<li>
+								<a href="<?php echo base_url("index.php/logout")?>" >Logout</a>
+							</li>
+		            <?php
+		            	}
+		            ?>
+                    <?php 
                     	if(! $registerHidden){
                     ?>
 							<li>

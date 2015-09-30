@@ -27,11 +27,11 @@ Class Gusers_model extends CI_Model {
 			$data['Id']=$this->GenId();
 		}
 		
-
+		//encrypt password for registration
 		$this->load->library('encryption');
-
 		$data['Password']=$this->encryption->encrypt($data['Password']);
 
+		//insert in database
 		$this->db->insert($sort, $data);
 	}
 
@@ -77,8 +77,12 @@ Class Gusers_model extends CI_Model {
 				unset($data[$key]);
 			}
 		}
+
+		//encrypt password for edit profile
 		$this->load->library('encryption');
 		$data['Password']=$this->encryption->encrypt($data['Password']);
+
+		//update the database
 		$this->db->where("Id",$userId);
 		$this->db->update("users",$data);
 	}

@@ -56,7 +56,14 @@
 			$this->load->view("front/users/register_form",$data);
 			$this->load->view('front/defaults/front-footer.php');
 			
-		
+		}
+
+		public function logout(){
+
+			$this->load->view('front/users/logout_form');
+			$this->session->sess_destroy();
+			$this->output->set_header('refresh:3;url=login');
+			$this->load->view('front/defaults/front-footer.php');
 		}
 
 }

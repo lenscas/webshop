@@ -65,7 +65,9 @@
 		if(way=="up"){
 			$(element).empty().html(Number(text)+1)
 		} else {
-			$(element).empty().html(Number(text)-1)
+			if(text>0){
+				$(element).empty().html(Number(text)-1)
+			}
 		}
 	}
 	function returnId(element){

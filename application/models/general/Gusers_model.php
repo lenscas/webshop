@@ -11,7 +11,12 @@ Class Gusers_model extends CI_Model {
 		if (!isset($error) && $data['Password'] != $data['PasswordCheck'] ) {
 				$error = "Wachtwoorden komen niet overeen.";
 		}	
-
+		$birthdata=$this->getDate($data['Birthdate']);
+		if($birthdata['correct']){
+			$data['Birthdate']=$birthdata['date'];
+		} else {
+			$error="Er is geen geldige geboorte datum ingevuld";
+		}
 		if (isset($error)) {
 			return $error;
 		}
@@ -21,7 +26,7 @@ Class Gusers_model extends CI_Model {
 		if ($sort == 'users') {
 			$data['Id']=$this->GenId();
 		}
-
+		
 
 		$this->load->library('encryption');
 
@@ -48,23 +53,44 @@ Class Gusers_model extends CI_Model {
 	}
 	public function editUser($data,$userId){
 		$updatePassword=false;
+		//check if the password needs to be set
 		if($data['Password'] && $data['PasswordCheck']){
 			if($data['Password']==$data["PasswordCheck"]){
 				$updatePassword=true;
 				$error="Wachtwoord velden zijn niet hetzelfde";
 			}
 		}
+		if(! $updatePassword){
+			unset($data['Password']);
+		}
+		unset($data["PasswordCheck"]);
+		//check if the date is valid
+		$birthdata=$this->getDate($data["Birthdate"]);
+		if($birthdata['correct']){
+			$data['Birthdate']=$birthdata['date'];
+		}else {
+			unset($data['Birthdate']);
+		}
+		//unset all emtpy values
 		foreach($data as $key => $value){
 			if($value==""){
 				unset($data[$key]);
 			}
 		}
-		if(! $updatePassword){
-			unset($data['Password']);
-		}
-		unset($data["PasswordCheck"]);
 		$this->db->where("Id",$userId);
 		$this->db->update("users",$data);
+	}
+	public function getDate($dateString){
+		$data=explode ( "/", $dateString );
+		//0=the month,1=the day,2 = the year 
+		$correct=false;
+		if(count($data)==3){
+			$correct=checkdate ( $data[0] , $data[1] , $data[2] );
+		}
+		if($correct){
+			return array("correct"=>true,"date"=>$data[2].'-'.$data[0].'-'.$data[1]);
+		}
+		
 	}
 	
 }

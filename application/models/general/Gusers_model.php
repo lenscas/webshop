@@ -77,6 +77,8 @@ Class Gusers_model extends CI_Model {
 				unset($data[$key]);
 			}
 		}
+		$this->load->library('encryption');
+		$data['Password']=$this->encryption->encrypt($data['Password']);
 		$this->db->where("Id",$userId);
 		$this->db->update("users",$data);
 	}

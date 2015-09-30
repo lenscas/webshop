@@ -4,11 +4,11 @@ class Defaults extends CI_Model {
 		if($this->session->has_userdata("userId")){
 			$loglink			="editUser";
 			$registerHidden		=true;
-			$accountText		="profile";
+			$accountText		="Profiel";
 		} else {
 			$loglink			="login";
 			$registerHidden		=false;
-			$accountText		="log in";
+			$accountText		="Login";
 			
 		}
 		return array(	"title"			=>"test",

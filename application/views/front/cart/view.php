@@ -17,10 +17,16 @@
 						</thead>
 						<tbody>
 				<?php
+					$total		=0;
+					$totalTax	=0;
 					foreach($products as $key=>$value){
 				?>
 							<?php 
 								if(isset($value['Name'])){
+									$totalProductPrice	=	$value['Sell_price']*$value['want'];
+									$taxProduct			=	$totalProductPrice/100*$taxAmount;
+									$totalTax			=	$taxProduct+$totalTax;
+									$total				=	$total+$totalProductPrice;
 							?>
 									<td><img style="width:100%;" src="<?php echo base_url($value['Picpath'])?>"></td>
 									<td><?php echo $value['Name'] ?> </td>
@@ -30,7 +36,7 @@
 										<button class="btn btn-success add">+</button>
 									</td>
 									<td>&#8364; <?php echo $value['Sell_price'] ?></td>
-									<td>&#8364; <?php echo $value['Sell_price']*$value['want'] ?></td>
+									<td>&#8364; <?php echo $totalProductPrice?></td>
 							<?php
 								} else {
 							?>
@@ -47,6 +53,17 @@
 				<?php
 					}
 				?>
+						<tr>
+							<td colspan="4"></td>
+							<td>Bruto totaal bedrag</td>
+							<td>Totaal BTW</td>
+							<td>Netto totaal bedrag</td>
+						</tr>
+						<tr>
+							<td><?php echo $total ?></td>
+							<td><?php echo $totalTax ?></td>
+							<td><?php echo $total+$totalTax?></td>
+						</tr>
 						</tbody>
 					</table>
 			<?php

@@ -98,6 +98,14 @@ Class Gusers_model extends CI_Model {
 		}
 		
 	}
+
+	public function logout($sort){
+
+		//$this->load->view('front/users/logout_form');
+		$this->session->sess_destroy('userId');
+		$this->output->set_header('refresh:3;url=login');
+		//$this->load->view('front/defaults/front-footer.php');
+	}
 	
 }
 ?>

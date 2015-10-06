@@ -158,6 +158,15 @@ function writeCategory($categories){
 				            <li>
 				            	  <a href="#">here</a>
 				            </li>
+				            <?php 
+			                	if($registerHidden){
+			                ?>
+									<li>
+										<a href="<?php echo base_url("index.php/order")?>" >Geschiedenis</a>
+									</li>
+				            <?php
+				            	}
+				            ?>
 				        </ul>
 				    </div>
 				    <!-- /.navbar-collapse -->

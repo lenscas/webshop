@@ -162,7 +162,7 @@ function writeCategory($categories){
 			                	if($registerHidden){
 			                ?>
 									<li>
-										<a href="<?php echo base_url("index.php/order")?>" >Geschiedenis</a>
+										<a href="<?php echo base_url("index.php/order/ajax/view")?>" >Geschiedenis</a>
 									</li>
 				            <?php
 				            	}

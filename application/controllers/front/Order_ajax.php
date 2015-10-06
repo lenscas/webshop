@@ -8,7 +8,6 @@
 			$data = $this->Gorders_model->getOrderFromUsers($this->session->userId);
 			echo json_encode($data);
 
-			
 		}
 	}
 ?>

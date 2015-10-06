@@ -81,7 +81,7 @@ $route['testHeader/user'] = 'testheader/user';
 	//order
 		$route['order'] 			=	'front/Order/Order_user';
 	//order-ajax
-		$route['order/ajax/view'] =	'front/Order_ajax/Order_user';
+		$route['order/ajax/view'] =	'front/Order/loadHistory' ;
 
 //admin
 	//viewing products

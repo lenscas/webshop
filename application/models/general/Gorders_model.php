@@ -8,5 +8,7 @@ Class Gorders_model extends CI_Model {
 		return $result = $query->result_array();
 	}
 
+	
+
 }
 ?>

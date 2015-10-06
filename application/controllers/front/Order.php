@@ -8,8 +8,18 @@
 		}
 
 		public function loadHistory(){
-			$this->load->model("front/Order");
-			$this->load->view("front/defaults/front-header.php",$data);
+			if(! $this->session->has_userData("userId")){
+				redirect("home");
+			}
+			$this->load->model("front/User_model");
+			$error = null;
+			if ($this->input->post()) {
+				$error = $this->User_model->Login_user($this->input->post());
+				if(!$error){
+					redirect("home");
+				}
+			} 
+			$this->load->model("front/Defaults");
 			$this->load->view("front/defaults/front-footer.php");
 		}
 	}

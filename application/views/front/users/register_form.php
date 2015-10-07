@@ -26,7 +26,7 @@
 
 				<div class="form-group">
 					<label>Geboortedatum</label>
-				 	<input type="date" name = "Birthdate" class="form-control" value="<?php echo (isset($Birthdate) ? $Birthdate : "");?>">
+				 	<input type="text" id="date" name = "Birthdate" class="form-control" value="<?php echo (isset($Birthdate) ? $Birthdate : "");?>">
 				</div>
 				<div class="form-group">
 					<label>Email</label>
@@ -47,7 +47,19 @@
 					}
 				?>
 
-				<button class="btn btn-success pull-right" type="submit"> <?php echo (isset($Username) ? "Weizigen" : "Registreren");?> </button>
+				<button class="btn btn-success pull-right" type="submit"> <?php echo (isset($Username) ? "Wijzigen" : "Registreren");?> </button>
 			</div>
 		</form>
+		
 </div>
+<script>
+  $(function() {
+    $( "#date" ).datepicker({
+      changeMonth:	true,
+      changeYear:	true,
+      yearRange:	("-100:+0"),
+      minDate:		("-100Y"),
+      maxDate:		("+0D")
+    });
+  });
+  </script>

@@ -25,6 +25,7 @@ class Cart extends CI_Controller {
 			$times++;
 		}
 		$this->load->view("front/cart/view",$contentData);
+		$this->load->view("front/defaults/front-footer.php");
 	
 	}
 }

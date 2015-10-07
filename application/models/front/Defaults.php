@@ -4,19 +4,23 @@ class Defaults extends CI_Model {
 		if($this->session->has_userdata("userId")){
 			$loglink			="editUser";
 			$registerHidden		=true;
-			$accountText		="profile";
+			$accountText		="Profiel";
+			$logoutLink			=true;
+
 		} else {
 			$loglink			="login";
 			$registerHidden		=false;
-			$accountText		="log in";
-			
+			$accountText		="Login";
+			$logoutLink			=false;
 		}
+
 		return array(	"title"			=>"test",
 						"accountText"	=>$accountText,
 						"warningMessage"=>"this is a test error message",
 						"warningClass"	=>"alert-success",
 						"warningVisible"=>true,
 						"logLink"		=>$loglink,
+						"logoutLink"	=>$logoutLink,
 						"registerHidden"=>$registerHidden
 					);
 	}

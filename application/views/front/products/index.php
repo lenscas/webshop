@@ -4,7 +4,7 @@
 		<div class="col-sm-4 col-lg-4 col-md-4 pagination-item shownProduct">
 			<a hreff="" class="link">
 				<div class="thumbnail" style="height:247px; overflow:hidden"> 
-					<img style="max-width:260px!important;height:150px;width:auto;float:center" src="<?php echo base_url("application/assets/products/1test.gif")?>"></img>
+					<img style="max-width:260px!important;height:150px;width:auto;float:center" src="<?php echo base_url("application/assets/products/1test.gif")?>">
 					<div class="caption">
 						<span class="pull-right">
 							<h4 class="price"></h4>
@@ -22,7 +22,7 @@
 <div class="col-md-9">
 	<div id="products">
 		<div class="row" id="row0">
-		<div>
+		</div>
 	</div>
 </div>
 
@@ -33,7 +33,6 @@
 		success:function(result,status,xhr){
 			var times=0
 			var lastId=0
-			console.log(result)
 			$.each(result, function(key,value){
 				if(times===3){
 					lastId=lastId+1
@@ -54,7 +53,5 @@
 			})
 		}
 		
-	}).done(function(msg){
-		console.log(msg)
 	})
 </script>

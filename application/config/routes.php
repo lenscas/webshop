@@ -55,15 +55,16 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //tests
-$route['testHeader/admin'] = 'testheader/admin';
-$route['testHeader/user'] = 'testheader/user';
+$route['testHeader/admin']	=	'testheader/admin';
+$route['testHeader/user']	=	'testheader/user';
 
 //user 
 
 	//login
-		$route['login'] 	=	'front/User/login_User';
+		$route['login']		=	'front/User/login_User';
 		$route['register']	=	'front/User/Register_User';
-		$route['editUser']	=	"front/User/editUser";
+		$route['editUser']	=	'front/User/editUser';
+		$route['logout']	=	'front/User/logout';
 
 	//looking at products
 		$route['home']				=	'front/Products/index';
@@ -74,15 +75,28 @@ $route['testHeader/user'] = 'testheader/user';
 		$route['cart/add/(:any)']	=	'front/Cart/add/$1';
 		$route['cart/view']			=	'front/Cart/seeCart';
 	//cart-ajax calls
-		$route['cart/ajax/add/(:any)']	=	'front/Cart_ajax/add/$1';
+		$route['cart/ajax/add/(:any)']		=	'front/Cart_ajax/add/$1';
 		$route['cart/ajax/subtract/(:any)']	=	'front/Cart_ajax/subtract/$1';
 
+<<<<<<< HEAD
+	//order-ajax
+		$route['order'] 			=	'front/Order_ajax/Order_user';
+	//order
+		$route['order/ajax/view'] =	'front/Order/loadHistory' ;
+
+=======
+	//orders
+		$route['makeOrder']	=	'front/Orders/makeOrder';
+	//orders
+		$route['ajax/getShipmentOption']	=	"front/Orders_ajax/getSendMethods";
+		$route['ajax/getShipmentCosts']		=	"front/Orders_ajax/getSendCost";
+>>>>>>> orders
 //admin
 	//viewing products
 	
 	//editing the products list
-		$route['admin/products/add']="back/Products/addProduct";
+		$route['admin/products/add']	=	"back/Products/addProduct";
 
 //general ajax-calls
 	//products
-		$route['products/getProducts'] = 'general/Ajax_products/getProducts';
+		$route['products/getProducts']	=	'general/Ajax_products/getProducts';

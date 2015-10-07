@@ -57,9 +57,15 @@ function writeCategory($categories){
     <link href="<?php echo base_url("application/third_party/startbootsrtap/css/heroic-features.css")?>" rel="stylesheet">
     <!-- Font Awesome because Awesome> !-->
     <link rel="stylesheet" href="<?php echo base_url("application/third_party/font-awesome-4.4.0/css/font-awesome.min.css")?>">
+	<link rel="stylesheet" href="<?php echo base_url("application/third_party/jquery-ui-1.11.4/jquery-ui.min.css") ?>">
+	<link rel="stylesheet" href="<?php echo base_url("application/third_party/jquery-ui-1.11.4/jquery-ui.theme.css") ?>">  
 	<script src="<?php echo base_url("application/third_party/jquery-1.11.3.min.js")?>" type="text/javascript"></script>
 	<script src="<?php echo base_url("application/third_party/jquery-ui-1.11.4/jquery-ui.js")?>" type="text/javascript"></script>
 	<script src="<?php echo base_url("application/third_party/bootstrap-3.3.5-dist/js/bootstrap.min.js")?>" type="text/javascript"></script>
+    
+	<!-- Datatable -->
+    <script src="<?php echo base_url("application/third_party/DataTables-1.10.9/media/js/jquery.dataTables.min.js")?>" type="text/javascript"></script>
+     <link rel="stylesheet" href="<?php echo base_url("application/third_party/DataTables-1.10.9/media/css/jquery.dataTables.min.css")?>">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -93,6 +99,15 @@ function writeCategory($categories){
                     <li>
                         <a href="<?php echo base_url("index.php/".$logLink)?>"><?php echo $accountText ?></a>
                     </li>
+                    <?php 
+                    	if($logoutLink){
+                    ?>
+							<li>
+								<a href="<?php echo base_url("index.php/logout")?>" >Logout</a>
+							</li>
+		            <?php
+		            	}
+		            ?>
                     <?php 
                     	if(! $registerHidden){
                     ?>
@@ -146,6 +161,15 @@ function writeCategory($categories){
 				            <li>
 				            	  <a href="#">here</a>
 				            </li>
+				            <?php 
+			                	if($registerHidden){
+			                ?>
+									<li>
+										<a href="<?php echo base_url("index.php/order/ajax/view")?>" >Geschiedenis</a>
+									</li>
+				            <?php
+				            	}
+				            ?>
 				        </ul>
 				    </div>
 				    <!-- /.navbar-collapse -->

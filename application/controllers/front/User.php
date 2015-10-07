@@ -56,7 +56,15 @@
 			$this->load->view("front/users/register_form",$data);
 			$this->load->view('front/defaults/front-footer.php');
 			
-		
+		}
+
+		public function logout(){
+			
+			$this->load->view('front/users/logout_form');
+			$this->load->model("general/Gusers_model");
+			$this->Gusers_model->logout("userId");
+			$this->output->set_header('refresh:3;url=login');
+			$this->load->view('front/defaults/front-footer.php');
 		}
 
 }

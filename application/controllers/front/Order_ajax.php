@@ -6,7 +6,26 @@
 			$error=null;
 
 			$data = $this->Gorders_model->getOrderFromUsers($this->session->userId);
-			echo json_encode($data);
+			
+			$string='{"data":[';
+			$first=true;
+			foreach ($data as $key => $value) {
+				if(!$first){
+					$string=$string.'],';
+					
+				} else {
+					$first=false;
+				}
+				$string=$string.'["'.$value["Id"].'",';
+				$string=$string.'"'.$value['Date'].'",';
+				$string=$string.'"'.$value['Status'].'",';
+				$string=$string.'"'.$value['TotalPrice'].'"';
+			}
+			$string=$string."]]}";
+
+			echo $string;
+
+			
 
 		}
 	}

@@ -78,9 +78,9 @@ $route['testHeader/user'] = 'testheader/user';
 		$route['cart/ajax/add/(:any)']	=	'front/Cart_ajax/add/$1';
 		$route['cart/ajax/subtract/(:any)']	=	'front/Cart_ajax/subtract/$1';
 
-	//order
-		$route['order'] 			=	'front/Order/Order_user';
 	//order-ajax
+		$route['order'] 			=	'front/Order_ajax/Order_user';
+	//order
 		$route['order/ajax/view'] =	'front/Order/loadHistory' ;
 
 //admin

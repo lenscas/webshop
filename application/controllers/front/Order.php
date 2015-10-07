@@ -19,7 +19,7 @@
 					redirect("home");
 				}
 			} 
-			$this->load->model("front/Defaults");
+			$this->load->view("front/Orders/ajax/view");
 			$this->load->view("front/defaults/front-footer.php");
 		}
 	}

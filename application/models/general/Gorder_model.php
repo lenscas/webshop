@@ -50,10 +50,11 @@ class Gorder_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->row_array();
 	}
-	public function InsertOrder($data,$cart){
+	public function InsertOrder($data,$cart,$userId=null){
 		$insertData=array();
 		if($data['usedPlace']=="custom"){
 			$data['user']["Land_id"]=$data['country'];
+			$data['user']["Users_Id"]=$userId;
 			$insertData['DeliverAddress_Id']=$this->CreateAdress($data['user']);
 		} else {
 			$insertData['DeliverAddress_Id']=$data['usedPlace'];
@@ -65,7 +66,8 @@ class Gorder_model extends CI_Model {
 			"price"=>$costData['TotalPrice'],
 			"TotalPrice"=>$costData['Tax']+$costData['TotalPrice'],
 			"Discount"=>0,
-			"SendMethodRule_id"=>$data['SendMethodRule_id']
+			"SendMethodRule_id"=>$data['SendMethodRule_id'],
+			
 		);
 		
 		$this->db->insert("orders",$orderData);

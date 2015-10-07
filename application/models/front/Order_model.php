@@ -1,6 +1,6 @@
-<<<<<<< HEAD
-<?php 
+<?php
 class Order_model extends CI_Model {
+	//wtf is this doing here! 
 	public function Login_user($login_data){
 		$this->db->select("*");
 		$this->db->from("users");
@@ -21,12 +21,6 @@ class Order_model extends CI_Model {
 			return "De gebruikersnaam of het wachtwoord is onjuist.";
 		}
 	}
-
-
-}
-=======
-<?php
-class Order_model extends CI_Model {
 	public function checkValidPostData($postData){
 		$this->load->model("general/Gorder_model");
 		$valid=false;
@@ -82,4 +76,3 @@ class Order_model extends CI_Model {
 	}
 }
 
->>>>>>> orders

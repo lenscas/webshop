@@ -25,7 +25,7 @@ class Orders extends CI_Controller {
 				echo $contentData['error'];
 			} else{
 				$loadForm=false;
-				$this->Gorder_model->InsertOrder($this->input->post(),$cart);
+				$this->Gorder_model->InsertOrder($this->input->post(),$cart,$this->session->userId);
 			} 
 		}
 		if($loadForm){

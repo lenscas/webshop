@@ -77,20 +77,13 @@ $route['testHeader/user']	=	'testheader/user';
 	//cart-ajax calls
 		$route['cart/ajax/add/(:any)']		=	'front/Cart_ajax/add/$1';
 		$route['cart/ajax/subtract/(:any)']	=	'front/Cart_ajax/subtract/$1';
-
-<<<<<<< HEAD
-	//order-ajax
-		$route['order'] 			=	'front/Order_ajax/Order_user';
-	//order
-		$route['order/ajax/view'] =	'front/Order/loadHistory' ;
-
-=======
 	//orders
 		$route['makeOrder']	=	'front/Orders/makeOrder';
-	//orders
+		$route['order/ajax/view'] =	'front/Order/loadHistory' ;
+	//orders ajax
 		$route['ajax/getShipmentOption']	=	"front/Orders_ajax/getSendMethods";
 		$route['ajax/getShipmentCosts']		=	"front/Orders_ajax/getSendCost";
->>>>>>> orders
+		$route['order'] 					=	'front/Order_ajax/Order_user';
 //admin
 	//viewing products
 	

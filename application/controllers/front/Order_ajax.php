@@ -6,7 +6,6 @@
 			$error=null;
 
 			$data = $this->Gorders_model->getOrderFromUsers($this->session->userId);
-			
 			$string='{"data":[';
 			$first=true;
 			foreach ($data as $key => $value) {

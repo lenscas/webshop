@@ -1,55 +1,35 @@
-CREATE DATABASE  IF NOT EXISTS `webshop` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `webshop`;
--- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (x86_64)
---
--- Host: localhost    Database: webshop
--- ------------------------------------------------------
--- Server version	5.5.44-0+deb8u1
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server versie:                5.6.17 - MySQL Community Server (GPL)
+-- Server OS:                    Win64
+-- HeidiSQL Versie:              8.2.0.4675
+-- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
--- Table structure for table `admin`
---
+-- Databasestructuur van webshop wordt geschreven
+CREATE DATABASE IF NOT EXISTS `webshop` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `webshop`;
 
-DROP TABLE IF EXISTS `admin`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `admin` (
-  `Id` varchar(256) NOT NULL,
+
+-- Structuur van  tabel webshop.admin wordt geschreven
+CREATE TABLE IF NOT EXISTS `admin` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Username` varchar(50) NOT NULL,
-  `Password` varchar(256) NOT NULL,
+  `Password` varchar(50) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `admin`
---
-
-LOCK TABLES `admin` WRITE;
+-- Dumpen data van tabel webshop.admin: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES ('','root','33cf1841bc8a32838048a5508827d567afcd695aa2d5860f368b5603a46d20d02fab1ff928ee99b4d241851f0687ef7c49a1e604616849ea019e96e80550a816dGNIzNa1NLmSVp15YdeqaRNuXlE9dDDZ/GpQWmR3zWA=');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `cartitems`
---
 
-DROP TABLE IF EXISTS `cartitems`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cartitems` (
+-- Structuur van  tabel webshop.cartitems wordt geschreven
+CREATE TABLE IF NOT EXISTS `cartitems` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Products_Id` int(11) NOT NULL,
   `ShoppingCart_Id` varchar(50) NOT NULL,
@@ -58,96 +38,52 @@ CREATE TABLE `cartitems` (
   `Ean` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `cartitems`
---
-
-LOCK TABLES `cartitems` WRITE;
+-- Dumpen data van tabel webshop.cartitems: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `cartitems` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cartitems` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `categories`
---
 
-DROP TABLE IF EXISTS `categories`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `categories` (
+-- Structuur van  tabel webshop.categories wordt geschreven
+CREATE TABLE IF NOT EXISTS `categories` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `categories`
---
-
-LOCK TABLES `categories` WRITE;
+-- Dumpen data van tabel webshop.categories: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `catlink`
---
 
-DROP TABLE IF EXISTS `catlink`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `catlink` (
+-- Structuur van  tabel webshop.catlink wordt geschreven
+CREATE TABLE IF NOT EXISTS `catlink` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Cat_Id` int(11) NOT NULL,
   `Sub_Cat_Id` int(11) NOT NULL,
   `Products_Id` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `catlink`
---
-
-LOCK TABLES `catlink` WRITE;
+-- Dumpen data van tabel webshop.catlink: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `catlink` DISABLE KEYS */;
 /*!40000 ALTER TABLE `catlink` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `countries`
---
 
-DROP TABLE IF EXISTS `countries`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `countries` (
+-- Structuur van  tabel webshop.countries wordt geschreven
+CREATE TABLE IF NOT EXISTS `countries` (
   `Id` int(11) NOT NULL,
   `Name` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `countries`
---
-
-LOCK TABLES `countries` WRITE;
+-- Dumpen data van tabel webshop.countries: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `countries` DISABLE KEYS */;
 /*!40000 ALTER TABLE `countries` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `deliveraddress`
---
 
-DROP TABLE IF EXISTS `deliveraddress`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `deliveraddress` (
+-- Structuur van  tabel webshop.deliveraddress wordt geschreven
+CREATE TABLE IF NOT EXISTS `deliveraddress` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Users_Id` varchar(50) DEFAULT NULL,
   `Address` varchar(50) DEFAULT NULL,
@@ -158,26 +94,15 @@ CREATE TABLE `deliveraddress` (
   KEY `Users_Id` (`Users_Id`),
   CONSTRAINT `Users_Id` FOREIGN KEY (`Users_Id`) REFERENCES `users` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `deliveraddress`
---
-
-LOCK TABLES `deliveraddress` WRITE;
+-- Dumpen data van tabel webshop.deliveraddress: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `deliveraddress` DISABLE KEYS */;
 /*!40000 ALTER TABLE `deliveraddress` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `orders`
---
 
-DROP TABLE IF EXISTS `orders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `orders` (
-  `Id` int(11) NOT NULL,
+-- Structuur van  tabel webshop.orders wordt geschreven
+CREATE TABLE IF NOT EXISTS `orders` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `DeliverAddress_Id` int(11) NOT NULL,
   `Date` date NOT NULL,
   `Status` int(11) NOT NULL,
@@ -188,50 +113,28 @@ CREATE TABLE `orders` (
   `Discount` decimal(10,0) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `orders`
---
-
-LOCK TABLES `orders` WRITE;
+-- Dumpen data van tabel webshop.orders: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `productorders`
---
 
-DROP TABLE IF EXISTS `productorders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `productorders` (
+-- Structuur van  tabel webshop.productorders wordt geschreven
+CREATE TABLE IF NOT EXISTS `productorders` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Order_Id` int(11) NOT NULL,
   `Product_Id` int(11) NOT NULL,
   `SalePrice` decimal(10,0) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `productorders`
---
-
-LOCK TABLES `productorders` WRITE;
+-- Dumpen data van tabel webshop.productorders: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `productorders` DISABLE KEYS */;
 /*!40000 ALTER TABLE `productorders` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `products`
---
 
-DROP TABLE IF EXISTS `products`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `products` (
+-- Structuur van  tabel webshop.products wordt geschreven
+CREATE TABLE IF NOT EXISTS `products` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
   `Description` text NOT NULL,
@@ -243,49 +146,27 @@ CREATE TABLE `products` (
   `Warranty` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `products`
---
-
-LOCK TABLES `products` WRITE;
+-- Dumpen data van tabel webshop.products: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `shoppingcart`
---
 
-DROP TABLE IF EXISTS `shoppingcart`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `shoppingcart` (
+-- Structuur van  tabel webshop.shoppingcart wordt geschreven
+CREATE TABLE IF NOT EXISTS `shoppingcart` (
   `Id` varchar(50) NOT NULL,
   `Users_Id` int(11) NOT NULL,
   `CartItems_Id` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `shoppingcart`
---
-
-LOCK TABLES `shoppingcart` WRITE;
+-- Dumpen data van tabel webshop.shoppingcart: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `shoppingcart` DISABLE KEYS */;
 /*!40000 ALTER TABLE `shoppingcart` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `stock`
---
 
-DROP TABLE IF EXISTS `stock`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `stock` (
+-- Structuur van  tabel webshop.stock wordt geschreven
+CREATE TABLE IF NOT EXISTS `stock` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Products_Id` int(11) NOT NULL,
   `Stock_Id` int(11) NOT NULL,
@@ -294,98 +175,51 @@ CREATE TABLE `stock` (
   `Ean` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `stock`
---
-
-LOCK TABLES `stock` WRITE;
+-- Dumpen data van tabel webshop.stock: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `subcat`
---
 
-DROP TABLE IF EXISTS `subcat`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `subcat` (
+-- Structuur van  tabel webshop.subcat wordt geschreven
+CREATE TABLE IF NOT EXISTS `subcat` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Cat_Id` int(11) NOT NULL,
   `Sub_Cat_Id` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `subcat`
---
-
-LOCK TABLES `subcat` WRITE;
+-- Dumpen data van tabel webshop.subcat: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `subcat` DISABLE KEYS */;
 /*!40000 ALTER TABLE `subcat` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `tax`
---
 
-DROP TABLE IF EXISTS `tax`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tax` (
+-- Structuur van  tabel webshop.tax wordt geschreven
+CREATE TABLE IF NOT EXISTS `tax` (
   `Tax_Id` int(11) NOT NULL AUTO_INCREMENT,
   `Tax_Amount` decimal(10,0) NOT NULL,
   PRIMARY KEY (`Tax_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `tax`
---
-
-LOCK TABLES `tax` WRITE;
+-- Dumpen data van tabel webshop.tax: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `tax` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tax` ENABLE KEYS */;
-UNLOCK TABLES;
 
---
--- Table structure for table `users`
---
 
-DROP TABLE IF EXISTS `users`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
-  `Id` varchar(256) NOT NULL,
+-- Structuur van  tabel webshop.users wordt geschreven
+CREATE TABLE IF NOT EXISTS `users` (
+  `Id` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `Birthdate` date NOT NULL,
   `Username` varchar(50) NOT NULL,
-  `Password` varchar(256) NOT NULL,
+  `Password` varchar(50) NOT NULL,
   `Gender` tinyint(1) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `users`
---
-
-LOCK TABLES `users` WRITE;
+-- Dumpen data van tabel webshop.users: ~0 rows (ongeveer)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2015-10-01  9:18:37

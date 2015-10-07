@@ -33,7 +33,6 @@
 		success:function(result,status,xhr){
 			var times=0
 			var lastId=0
-			console.log(result)
 			$.each(result, function(key,value){
 				if(times===3){
 					lastId=lastId+1
@@ -54,7 +53,5 @@
 			})
 		}
 		
-	}).done(function(msg){
-		console.log(msg)
 	})
 </script>

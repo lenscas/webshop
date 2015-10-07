@@ -24,7 +24,7 @@
 							<?php 
 								if(isset($value['Name'])){
 									$totalProductPrice	=	$value['Sell_price']*$value['want'];
-									$taxProduct			=	$totalProductPrice/100*$taxAmount;
+									$taxProduct			=	$totalProductPrice/100*$value['taxAmount'];
 									$totalTax			=	$taxProduct+$totalTax;
 									$total				=	$total+$totalProductPrice;
 							?>
@@ -53,19 +53,23 @@
 				<?php
 					}
 				?>
+						<tr >
+							<td colspan="4"></td>
+							<td style="border-top:solid 2px black">Bruto totaal bedrag</td>
+							<td style="border-top:solid 2px black"><?php echo $total ?></td>
+						</tr>
 						<tr>
 							<td colspan="4"></td>
-							<td>Bruto totaal bedrag</td>
 							<td>Totaal BTW</td>
-							<td>Netto totaal bedrag</td>
-						</tr>
-						<tr>
-							<td><?php echo $total ?></td>
 							<td><?php echo $totalTax ?></td>
+						</tr>
+							<td colspan="4"></td>
+							<td>Netto totaal bedrag</td>
 							<td><?php echo $total+$totalTax?></td>
 						</tr>
-						</tbody>
-					</table>
+					</tbody>
+				</table>
+				<a href="<?php echo base_url("index.php/makeOrder")?>" class="btn btn-success pull-right">Order aanmaken</a>
 			<?php
 				} else {
 			?>

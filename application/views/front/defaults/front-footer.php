@@ -16,7 +16,6 @@
 </script>
 	</div>
 </div>
-
 	<footer style="margin-bottom:0px;">
 		<div class="footer navbar navbar-inverse"style="margin-bottom:0px;"> 
 	      		<div class="container ">
@@ -27,7 +26,6 @@
 	        </div>
 	      </div>
     </footer>
-
 </body>
 
 </html>

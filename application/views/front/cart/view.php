@@ -17,10 +17,16 @@
 						</thead>
 						<tbody>
 				<?php
+					$total		=0;
+					$totalTax	=0;
 					foreach($products as $key=>$value){
 				?>
 							<?php 
 								if(isset($value['Name'])){
+									$totalProductPrice	=	$value['Sell_price']*$value['want'];
+									$taxProduct			=	$totalProductPrice/100*$value['taxAmount'];
+									$totalTax			=	$taxProduct+$totalTax;
+									$total				=	$total+$totalProductPrice;
 							?>
 									<td><img style="width:100%;" src="<?php echo base_url($value['Picpath'])?>"></td>
 									<td><?php echo $value['Name'] ?> </td>
@@ -30,7 +36,7 @@
 										<button class="btn btn-success add">+</button>
 									</td>
 									<td>&#8364; <?php echo $value['Sell_price'] ?></td>
-									<td>&#8364; <?php echo $value['Sell_price']*$value['want'] ?></td>
+									<td>&#8364; <?php echo $totalProductPrice?></td>
 							<?php
 								} else {
 							?>
@@ -47,8 +53,23 @@
 				<?php
 					}
 				?>
-						</tbody>
-					</table>
+						<tr >
+							<td colspan="4"></td>
+							<td style="border-top:solid 2px black">Bruto totaal bedrag</td>
+							<td style="border-top:solid 2px black"><?php echo $total ?></td>
+						</tr>
+						<tr>
+							<td colspan="4"></td>
+							<td>Totaal BTW</td>
+							<td><?php echo $totalTax ?></td>
+						</tr>
+							<td colspan="4"></td>
+							<td>Netto totaal bedrag</td>
+							<td><?php echo $total+$totalTax?></td>
+						</tr>
+					</tbody>
+				</table>
+				<a href="<?php echo base_url("index.php/makeOrder")?>" class="btn btn-success pull-right">Order aanmaken</a>
 			<?php
 				} else {
 			?>

@@ -1,8 +1,9 @@
 <?php 
 class Gproducts_model extends CI_Model {
 	public function getProducts(){
-		$this->db->select("*");
+		$this->db->select("*,tax.Tax_Amount AS taxAmount ");
 		$this->db->from("products");
+		$this->db->join('tax', 'tax.Tax_Id = products.Tax_Id');
 		$query=$this->db->get();
 		$result=$query->result_array();
 		foreach($result as $key =>$value){
@@ -31,13 +32,22 @@ class Gproducts_model extends CI_Model {
 		return $result;
 	}
 	public function getProductData($id){
-		$this->db->select('*');
+		$this->db->select('*,tax.Tax_Amount AS taxAmount');
 		$this->db->from("products");
 		$this->db->where("Id",$id);
+		$this->db->join('tax', 'tax.Tax_Id = products.Tax_Id');
 		$query=$this->db->get();
 		$result=$query->row_array();
 		$result["stock"]=$this->getStock($id);
 		return $result;
+	}
+	public function getProductWeigth($id){
+		$this->db->select("Weight,Id");
+		$this->db->from("products");
+		$this->db->where("Id",$id);
+		$query=$this->db->get();
+		$result=$query->row_array();
+		return $result['Weight'];
 	}
 
 }

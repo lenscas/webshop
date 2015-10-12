@@ -79,7 +79,7 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['cart/ajax/subtract/(:any)']	=	'front/Cart_ajax/subtract/$1';
 	//orders
 		$route['makeOrder']	=	'front/Orders/makeOrder';
-		$route['order/ajax/view'] =	'front/Order/loadHistory' ;
+		$route['order/ajax/view'] =	'front/Orders/loadHistory' ;
 	//orders ajax
 		$route['ajax/getShipmentOption']	=	"front/Orders_ajax/getSendMethods";
 		$route['ajax/getShipmentCosts']		=	"front/Orders_ajax/getSendCost";

@@ -85,6 +85,10 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['ajax/getShipmentCosts']		=	"front/Orders_ajax/getSendCost";
 		$route['order'] 					=	'front/Order_ajax/Order_user';
 //admin
+	//login 
+		$route['admin/login']	=	"back/Admins/logIn";
+	//home
+		$route['admin/home']	=	"back/Admins/dashboard";
 	//viewing products
 	
 	//editing the products list

@@ -32,6 +32,15 @@
       <div class="login-box-body">
         <p class="login-box-msg">Log in</p>
         <form method="post">
+          <?php 
+          	if($error){
+          ?>
+          	<div class="alert alert-danger">
+          		<?php echo $error ?>
+          	</div>
+          <?php
+          	}
+          ?>
           <div class="form-group has-feedback">
             <input type="text" name="Username" class="form-control" placeholder="Gebruikers naam">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

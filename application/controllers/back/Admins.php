@@ -3,16 +3,16 @@ class Admins extends CI_Controller {
 	
 	public function logIn(){
 		$showForm=true;
+		$error=false;
 		if($this->input->post()){
 			$this->load->model("general/Gusers_model");
 			$error=$this->Gusers_model->login("admin",$this->input->post());
-			echo $error;
 			if(!$error){
 				$showForm=false;
 			}
 		}
 		if($showForm){
-			$this->load->view("back/admin/login");
+			$this->load->view("back/admin/login",array("error"=>$error));
 		} else {
 			redirect("admin/home");
 			/*

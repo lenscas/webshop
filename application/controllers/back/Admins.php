@@ -15,8 +15,6 @@ class Admins extends CI_Controller {
 			$this->load->view("back/admin/login",array("error"=>$error));
 		} else {
 			redirect("admin/home");
-			/*
-			*/
 		}
 	}
 	public function dashboard(){

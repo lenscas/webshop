@@ -62,6 +62,7 @@ function writeCategory($categories){
 	<script src="<?php echo base_url("application/third_party/jquery-1.11.3.min.js")?>" type="text/javascript"></script>
 	<script src="<?php echo base_url("application/third_party/jquery-ui-1.11.4/jquery-ui.js")?>" type="text/javascript"></script>
 	<script src="<?php echo base_url("application/third_party/bootstrap-3.3.5-dist/js/bootstrap.min.js")?>" type="text/javascript"></script>
+	<script src="<?php echo base_url("application/third_party/tinymce/js/tinymce/tinymce.min.js")?>"></script>
     
 	<!-- Datatable -->
     <script src="<?php echo base_url("application/third_party/DataTables-1.10.9/media/js/jquery.dataTables.min.js")?>" type="text/javascript"></script>

@@ -115,4 +115,12 @@ class Gorder_model extends CI_Model {
 		}
 		return array("TotalPrice"=>$totalCost,"Tax"=>$totalTax);
 	}
+	public function getOrderById($id){
+		$this->db->select("*");
+		$this->db->from("orders");
+		$this->db->join("deliveraddress","deliveraddress.Id=orders.DeliverAddress_Id");
+		$this->db->where("orders.Id",$id);
+		$query=$this->db->get();
+		return $query->row_array();
+	}
 }

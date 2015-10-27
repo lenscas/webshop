@@ -78,12 +78,15 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['cart/ajax/add/(:any)']		=	'front/Cart_ajax/add/$1';
 		$route['cart/ajax/subtract/(:any)']	=	'front/Cart_ajax/subtract/$1';
 	//orders
-		$route['makeOrder']	=	'front/Orders/makeOrder';
-		$route['order/ajax/view'] =	'front/Order/loadHistory' ;
+		$route['makeOrder']			=	'front/Orders/makeOrder';
+		$route['order/ajax/view']	=	'front/Order/loadHistory' ;
 	//orders ajax
 		$route['ajax/getShipmentOption']	=	"front/Orders_ajax/getSendMethods";
 		$route['ajax/getShipmentCosts']		=	"front/Orders_ajax/getSendCost";
 		$route['order'] 					=	'front/Order_ajax/Order_user';
+	//RMA
+		$route['RMA/history']		=	'front/Rma/viewAllRma';
+		$route['RMA/create/(:any)']	=	'front/Rma/createRMA/$1';
 //admin
 	//login 
 		$route['admin/login']	=	"back/Admins/logIn";

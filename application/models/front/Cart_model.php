@@ -38,6 +38,17 @@ class cart_model extends CI_Model {
 		//update the Database
 		$this->updateCartDB($cart);
 	}
+	public function deleteFromCart($productId){
+		//get the array with the products
+		$cart = $this->getCart();
+		unset($cart[$productId]);
+
+		//update the session
+		$this->session->set_userdata("cart",$cart);
+		//update the Database
+		$this->updateCartDB($cart);
+
+	}
 	public function getCart(){
 		//check if the session contains data for the cart if it has then return it, else look in the Database to see if there is an old one
 		if (! $this->session->has_userdata("cart")) {

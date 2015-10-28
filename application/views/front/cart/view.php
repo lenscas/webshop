@@ -13,6 +13,7 @@
 								<th class="col-md-2"></th>
 								<th class="col-md-2">Product prijs</th>
 								<th class="col-md-2">Totaal prijs</th>
+								<th class="col-md-2">Verwijderen</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -21,6 +22,7 @@
 					$totalTax	=0;
 					foreach($products as $key=>$value){
 				?>
+						<tr id="product<?php echo $value["Id"]?>">
 							<?php 
 								if(isset($value['Name'])){
 									$totalProductPrice	=	$value['Sell_price']*$value['want'];
@@ -31,17 +33,19 @@
 									<td><img style="width:100%;" src="<?php echo base_url($value['Picpath'])?>"></td>
 									<td><?php echo $value['Name'] ?> </td>
 									<td class="want"><?php echo $value['want']?></td>
-									<td id="product<?php echo $value["Id"]?>">
+									<td>
 										<button class="btn btn-danger subtract">-</button>
 										<button class="btn btn-success add">+</button>
 									</td>
 									<td>&#8364; <?php echo $value['Sell_price'] ?></td>
 									<td>&#8364; <?php echo $totalProductPrice?></td>
+									<td><button type="button" class="btn btn-danger delete"><span class="fa fa-times"></span></button></td>
 							<?php
 								} else {
 							?>
 								<td></td>
 								<td>Product kon niet worden weergegeven</td>
+								<td></td>
 								<td></td>
 								<td></td>
 								<td></td>
@@ -92,7 +96,7 @@
 		}
 	}
 	function returnId(element){
-		var id=$(element).parent().attr("id")
+		var id=$(element).parent().parent().attr("id")
 		var cleanId=id.replace("product","")
 		return [id,cleanId]
 	}
@@ -101,7 +105,7 @@
 		$.ajax({
 			url:"<?php echo base_url("index.php/cart/ajax/add")?>/"+idList[1],
 			success:function (){
-				var element= $("#"+idList[0]).parent().find(".want")
+				var element= $("#"+idList[0]).find(".want")
 				changeWant("up",element)
 			}
 			
@@ -112,10 +116,21 @@
 		$.ajax({
 		url: "<?php echo base_url("index.php/cart/ajax/subtract")?>/"+idList[1],
 		success:function (){
-				var element= $("#"+idList[0]).parent().find(".want")
+				var element= $("#"+idList[0]).find(".want")
 				changeWant("down",element)
 			}
 		})
 	})
+	$(".delete").on("click",function(){
+		var idList=returnId(this)
+		$.ajax({
+		url: "<?php echo base_url("index.php/cart/ajax/delete")?>/"+idList[1],
+		success:function (){
+				var element= $("#"+idList[0]).find(".want")
+				$(element).empty().html(0)
+			}
+		})
+	})
+	
 
 </script>

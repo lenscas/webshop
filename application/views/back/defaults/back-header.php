@@ -44,10 +44,10 @@
       $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="<?php echo base_url("application/third_party/bootstrap-3.3.5-dist/js/bootstrap.min.js")?>"</script>
+    <script src="<?php echo base_url("application/third_party/bootstrap-3.3.5-dist/js/bootstrap.min.js")?>"></script>
     <!-- Morris.js charts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="<?php echo base_url("application/third_party/AdminLTE-2.3.0/plugins/morris/morris.min.js")?>"</script>
+    <script src="<?php echo base_url("application/third_party/AdminLTE-2.3.0/plugins/morris/morris.min.js")?>"></script>
     <!-- Sparkline -->
     <script src="<?php echo base_url("application/third_party/AdminLTE-2.3.0/plugins/sparkline/jquery.sparkline.min.js")?>"></script>
     <!-- jvectormap -->

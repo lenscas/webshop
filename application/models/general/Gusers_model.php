@@ -102,9 +102,34 @@ Class Gusers_model extends CI_Model {
 	public function logout($sort){
 
 		//$this->load->view('front/users/logout_form');
-		$this->session->sess_destroy('userId');
+		$this->session->sess_destroy($sort);
 		$this->output->set_header('refresh:3;url=login');
 		//$this->load->view('front/defaults/front-footer.php');
+	}
+	public function login($table,$login_data){
+		$error=true;
+		$this->db->select("*");
+		$this->db->from($table);
+		$this->db->where("Username",$login_data["Username"]);
+		$this->db->limit("1");
+		$query=$this->db->get();
+		$result=$query->row_array();
+		$this->load->library('encryption');
+
+		if (isset($result['Password'])) {
+			$decryptedPassword=$this->encryption->decrypt($result['Password']);
+			if($decryptedPassword==$login_data['Password']){
+				if($table="admin"){
+					$this->session->set_userdata("adminId",$result['Id']);
+				} else {
+					$this->session->set_userdata("userId",$result['Id']);
+				}
+				$error=false;
+			}
+		}
+		if($error){
+			return "De gebruikersnaam of het wachtwoord is onjuist.";
+		}
 	}
 	
 }

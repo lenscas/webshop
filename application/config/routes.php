@@ -96,6 +96,8 @@ $route['testHeader/user']	=	'testheader/user';
 	
 	//editing the products list
 		$route['admin/products/add']	=	"back/Products/addProduct";
+	//inserting categories
+		$route['admin/categories/add']	=	"back/Categories/insertCategory";
 
 //general ajax-calls
 	//products

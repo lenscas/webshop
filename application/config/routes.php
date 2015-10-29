@@ -77,6 +77,7 @@ $route['testHeader/user']	=	'testheader/user';
 	//cart-ajax calls
 		$route['cart/ajax/add/(:any)']		=	'front/Cart_ajax/add/$1';
 		$route['cart/ajax/subtract/(:any)']	=	'front/Cart_ajax/subtract/$1';
+		$route['cart/ajax/delete/(:any)']	=	'front/Cart_ajax/delete/$1';
 	//orders
 		$route['makeOrder']			=	'front/Orders/makeOrder';
 		$route['order/ajax/view']	=	'front/Order/loadHistory' ;

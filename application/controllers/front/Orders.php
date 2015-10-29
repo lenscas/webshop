@@ -42,5 +42,21 @@ class Orders extends CI_Controller {
 		}
 		$this->load->view("front/defaults/front-footer.php");
 	}
+
+	public function loadHistory(){
+			if(! $this->session->has_userData("userId")){
+				redirect("home");
+			}
+			$this->load->model("front/User_model");
+			$error = null;
+			if ($this->input->post()) {
+				$error = $this->User_model->Login_user($this->input->post());
+				if(!$error){
+					redirect("home");
+				}
+			} 
+			$this->load->view("front/orders/ajax/view");
+			$this->load->view("front/defaults/front-footer.php");
+		}
 	
 }

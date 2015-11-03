@@ -39,8 +39,9 @@ class cart_model extends CI_Model {
 		$this->updateCartDB($cart);
 	}
 	public function deleteFromCart($productId){
-		//get the array with the products
+		//get the array with the products that are currently in the cart
 		$cart = $this->getCart();
+		//sets the amount on 0, product will stay in cart untill refresh website.
 		unset($cart[$productId]);
 
 		//update the session

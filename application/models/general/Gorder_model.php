@@ -69,7 +69,9 @@ class Gorder_model extends CI_Model {
 			"SendMethodRule_id"=>$data['SendMethodRule_id'],
 			
 		);
-		
+		$this->load->helper("string");
+		$helpVariable=mt_rand(0,1000) . 'x' . date('His');
+		$orderData['Transaction_Id']=substr(preg_replace('/[^a-zA-Z0-9]+/', '', $helpVariable),0,35);
 		$this->db->insert("orders",$orderData);
 		$orderId=$this->db->insert_id();
 		
@@ -96,6 +98,7 @@ class Gorder_model extends CI_Model {
 				$this->db->insert("backOrders",array("Product_Id"=>$key,"Order_Id"=>$orderId));
 			}
 		}
+		return $orderId;
 		
 	}
 	public function CreateAdress($data){

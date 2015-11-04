@@ -19,4 +19,11 @@ class Categories extends CI_Controller {
 		$this->load->view('back/categories/add',$contentData);
 		$this->load->view("back/defaults/back-footer.php");
 	}
+	public function showCategoriesForDelete(){
+		$this->load->model("general/Gcategories_model");
+		$categories=$this->Gcategories_model->loadAllCategories(true);
+		$contentData=array("categoriesList"=>$categories);
+		$this->load->view('back/categories/disable',$contentData);
+		$this->load->view("back/defaults/back-footer.php");
+	}
 }

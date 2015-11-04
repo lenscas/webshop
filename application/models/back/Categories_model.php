@@ -17,4 +17,8 @@ class Categories_model extends CI_Model {
 		$insertData['Name']=$data['Name'];
 		$this->db->insert($table,$insertData);
 	}
+	public function disable($table,$id){
+		$this->db->where("Id",$id);
+		$this->db->update($table,array("Disabled"=>1));
+	}
 }

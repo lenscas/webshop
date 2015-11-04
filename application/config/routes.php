@@ -1,4 +1,4 @@
-<?php
+	<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -99,7 +99,10 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['admin/products/add']	=	"back/Products/addProduct";
 	//inserting categories
 		$route['admin/categories/add']	=	"back/Categories/insertCategory";
-
+	//viewing orders
+		$route['admin/orders/view']	=	"back/Orders/viewOrder";
+		$route['admin/orders/ajax/getorders']	= "back/Ajax_orders/GetAllOrders";
 //general ajax-calls
 	//products
 		$route['products/getProducts']	=	'general/Ajax_products/getProducts';
+

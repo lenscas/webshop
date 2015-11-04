@@ -1,7 +1,14 @@
 <?php
 class Ajax_products extends CI_Controller {
-	public function getProducts(){
+	public function getProducts($orderId = false){
 		$this->load->model("general/Gproducts_model");
-		echo json_encode($this->Gproducts_model->getProducts());
+
+		if (!$orderId) {
+			echo json_encode($this->Gproducts_model->getProducts());
+		} else {
+			
+		}
+		
+		
 	}
 }

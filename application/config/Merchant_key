@@ -1,0 +1,4 @@
+Simulatie-URL_connector: https://payment-webinit.simu.omnikassa.rabobank.nl/paymentServlet
+merchantID: 002020000000001
+secretKey: 002020000000001_KEY1
+keyVersion: 1

@@ -1,5 +1,12 @@
 <?php 
 class Products extends CI_Controller {
+	public function __construct(){
+		parent::__construct();
+		$this->load->model("back/Defaults_model");
+		$headerData=$this->Defaults_model->loadHeaderData();
+		$this->load->view("back/defaults/back-header.php",$headerData);
+		$this->load->view("back/defaults/menu");
+	}
 	public function addProduct(){
 		$contentData=array();
 		$data=$this->input->post();
@@ -10,7 +17,7 @@ class Products extends CI_Controller {
 					$contentData["error"][]="Er is een waarde niet ingevuld.";
 				}
 				if($key=="Fragile"){
-					$data[$key]=1;
+					$data[$key]=1; 
 				}
 			}
 			if(!isset($contentData["error"])){
@@ -35,8 +42,60 @@ class Products extends CI_Controller {
 			}
 		}
 		$contentData['taxOptions']=$this->Products_model->getTaxOptions();
-		$this->load->view("back/defaults/back-header.php");
+		//$this->load->view("back/defaults/back-header.php");
+		//
 		$this->load->view("back/defaults/menu.php");
+		$this->load->view("back/products/add.php",$contentData);
+		$this->load->view("back/defaults/back-footer.php");
+	}
+
+	public function editProduct($productId){		
+		$contentData=array();
+		
+		$data=$this->input->post();
+		$this->load->model("back/Products_model");
+		$this->load->model("general/Gproducts_model");
+		$contentData['productData']=$this->Gproducts_model->getProductData($productId);
+		if($data){
+			
+			foreach($data as $key => $value){
+				if($value==""){
+					$contentData["error"][]="Er is een waarde niet ingevuld.";
+				}
+				
+			}
+			if(isset($data["Fragile"])){
+				$data["Fragile"]=1;
+			} else {
+				$data["Fragile"]=0;
+			}
+			if(!isset($contentData["error"])){
+				$config['upload_path'] = './application/assets/products';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size']	= '100000';
+				$config['max_width']  = '10240';
+				$config['max_height']  = '7680';
+				$this->load->library('upload', $config);
+				//first upload 
+				$this->upload->do_upload("Picture");
+				$uploadData=$this->upload->data();
+				if($this->upload->display_errors()){
+					$contentData["error"]="De afbeeling kon niet worden ge-upload.";
+				} else {
+					$data['Picpath']="/application/assets/products/".$uploadData['file_name'];
+					$this->load->helper("file");
+					//echo FCPATH. preg_replace('/^\//', '', $contentData['productData']["Picpath"]);
+					delete_files(FCPATH. preg_replace('/^\//', '', $contentData['productData']["Picpath"]));
+				}
+			}
+			unset($data['Picture']);
+			$this->Products_model->editProduct($data,$productId);
+			$contentData["success"]="Het product is bijgewerkt.";
+			}
+		$contentData['taxOptions']=$this->Products_model->getTaxOptions();
+		$contentData['productData']=$this->Gproducts_model->getProductData($productId);
+		//$this->load->view("back/defaults/back-header.php");
+		//
 		$this->load->view("back/products/add.php",$contentData);
 		$this->load->view("back/defaults/back-footer.php");
 	}

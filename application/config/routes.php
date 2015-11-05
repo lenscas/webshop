@@ -99,14 +99,18 @@ $route['testHeader/user']	=	'testheader/user';
 	
 	//editing the products list
 		$route['admin/products/add']	=	"back/Products/addProduct";
+	//editing products
+		$route['admin/products/edit/(:any)']    = "back/Products/editProduct/$1";
 	//categories
-		$route['admin/categories/add']	=	"back/Categories/insertCategory";
+		//inserting categories
+			$route['admin/categories/add']	=	"back/Categories/insertCategory";
+		//disable/enable the categories
+			$route['admin/categories/disable']	=	"back/Categories/showCategoriesForDelete";
+			$route['admin/categories/ajax/delete/(:any)/(:any)'] = "back/CategoriesAjax/disable/$1/$2";
 	//viewing orders
 		$route['admin/orders/view']	=	"back/Orders/viewOrder";
 		$route['admin/orders/ajax/getorders']	= "back/Ajax_orders/GetAllOrders";
-		//disable/enable the categories
-		$route['admin/categories/disable']	=	"back/Categories/showCategoriesForDelete";
-		$route['admin/categories/ajax/delete/(:any)/(:any)'] = "back/CategoriesAjax/disable/$1/$2";
+		
 //general ajax-calls
 	//products
 		$route['products/getProducts']	=	'general/Ajax_products/getProducts';

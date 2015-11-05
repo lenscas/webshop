@@ -1,4 +1,4 @@
-<?php
+	<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
@@ -81,6 +81,8 @@ $route['testHeader/user']	=	'testheader/user';
 	//orders
 		$route['makeOrder']			=	'front/Orders/makeOrder';
 		$route['order/ajax/view']	=	'front/Order/loadHistory' ;
+		//payment
+			$route['orders/success']	=	'front/Orders/payOrder';
 	//orders ajax
 		$route['ajax/getShipmentOption']	=	"front/Orders_ajax/getSendMethods";
 		$route['ajax/getShipmentCosts']		=	"front/Orders_ajax/getSendCost";
@@ -99,9 +101,17 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['admin/products/add']	=	"back/Products/addProduct";
 	//editing products
 		$route['admin/products/edit/(:any)']    = "back/Products/editProduct/$1";
-	//inserting categories
-		$route['admin/categories/add']	=	"back/Categories/insertCategory";
-
+	//categories
+		//inserting categories
+			$route['admin/categories/add']	=	"back/Categories/insertCategory";
+		//disable/enable the categories
+			$route['admin/categories/disable']	=	"back/Categories/showCategoriesForDelete";
+			$route['admin/categories/ajax/delete/(:any)/(:any)'] = "back/CategoriesAjax/disable/$1/$2";
+	//viewing orders
+		$route['admin/orders/view']	=	"back/Orders/viewOrder";
+		$route['admin/orders/ajax/getorders']	= "back/Ajax_orders/GetAllOrders";
+		
 //general ajax-calls
 	//products
 		$route['products/getProducts']	=	'general/Ajax_products/getProducts';
+

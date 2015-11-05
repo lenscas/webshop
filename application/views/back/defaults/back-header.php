@@ -30,6 +30,7 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="<?php echo base_url("application/third_party/AdminLTE-2.3.0/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css")?>">
 
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -74,6 +75,9 @@
     <!--<script src="<?php echo base_url("application/third_party/AdminLTE-2.3.0/dist/js/pages/dashboard.js")?>"</script> -->
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo base_url("application/third_party/AdminLTE-2.3.0/dist/js/demo.js")?>" ></script>
+    <!-- Datatable -->
+    <script src="<?php echo base_url("application/third_party/DataTables-1.10.9/media/js/jquery.dataTables.min.js")?>" type="text/javascript"></script>
+    <link rel="stylesheet" href="<?php echo base_url("application/third_party/DataTables-1.10.9/media/css/jquery.dataTables.min.css")?>">
   
   </head>
   <body class="hold-transition skin-blue sidebar-mini">

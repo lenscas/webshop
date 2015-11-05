@@ -57,13 +57,17 @@ class cart_model extends CI_Model {
 		}
 		return $this->session->cart;
 	}
-	public function updateCartDB(){
+	public function deleteCart(){
+		$this->session->set_userdata("cart",array());
+		$this->updateCartDB();
+	}
+	private function updateCartDB(){
 		/*
 		if($this->session->has_userdata("loggedIn")){
 			$this->db->update();
 		}*/
 	}
-	public function createCartId(){
+	private function createCartId(){
 		$this->load->helper('string');
 		$this->db->select("count(*) AS count");
 		$this->db->from("shoppingcart");
@@ -71,7 +75,7 @@ class cart_model extends CI_Model {
 		$result=$query->row_array();
 		return sha1($result."/".random_string("alpha",4)."/".time());
 	}
-	public function getCartDb(){
+	private function getCartDb(){
 		//get the user Id
 		$cart=array();
 		/*if($this->session->has_userdata("userId")){

@@ -36,7 +36,7 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label>Product naam</label>
-							<input class="form-control" type="text" name="Name">
+							<input class="form-control" type="text" name="Name" value="<?php echo (isset($productData["Name"]) ? $productData["Name"] :""); ?>">
 						</div>
 						<div class="form-group">	
 							<label>path to picture</label>
@@ -44,12 +44,12 @@
 						</div>
 						<div class="form-group">
 							<label>Gewicht in (?)</label>	
-							<input class="form-control" type="text" name="Weight">
+							<input class="form-control" type="text" name="Weight" value="<?php echo (isset($productData["Weight"]) ? $productData["Weight"] :""); ?>">
 						</div>
 							
 						<div class="form-group">
 							<label>Verkoop prijs</label>
-							<input class="form-control" type="text" name="Sell_Price">
+							<input class="form-control" type="text" name="Sell_Price"  value="<?php echo (isset($productData["Sell_price"]) ? $productData["Sell_price"] :""); ?>">
 						</div>
 						<div class="form-group">
 							<label>BTW (needs to become a dropdown)</label>
@@ -63,14 +63,19 @@
 						</div>
 						<div class="form-group">
 							<label>Garantie in maanden</label>						
-							<input class="form-control" type="text" name="Warranty">
+							<input class="form-control" type="text" name="Warranty" value="<?php echo (isset($productData["Warranty"]) ? $productData["Warranty"] :""); ?>">
 						</div>
-						<label class="check-box">Breekbaar: <input class="pull-right" type="checkbox" name="Fragile"> </label>
+						<label class="check-box">Breekbaar: <input class="pull-right" type="checkbox" name="Fragile" <?php if(isset($productData["Fragile"])){
+									if ($productData["Fragile"]==1) {
+										echo "checked";
+									}
+								}?>>
+						 </label>
 					</div>
 					<div class="col-md-8">
 						<div class="form-group">
 							<label>Beschrijving</label>
-							<textarea class="form-control" name="Description" id="description"></textarea>
+							<textarea class="form-control" name="Description" id="description"><p>"<?php echo (isset($productData["Description"]) ? $productData["Description"] :""); ?>"</p></textarea>
 						</div>
 					</div>
 				</div>

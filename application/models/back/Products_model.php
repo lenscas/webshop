@@ -9,5 +9,11 @@ class Products_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+
+
+	public function editProduct($data,$productId){
+		$this->db->where("products.Id",$productId);
+		$this->db->update("products",$data);
+	}
 }
 ?>

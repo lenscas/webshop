@@ -97,6 +97,8 @@ $route['testHeader/user']	=	'testheader/user';
 	
 	//editing the products list
 		$route['admin/products/add']	=	"back/Products/addProduct";
+	//editing products
+		$route['admin/products/edit/(:any)']    = "back/Products/editProduct/$1";
 	//inserting categories
 		$route['admin/categories/add']	=	"back/Categories/insertCategory";
 

@@ -75,7 +75,7 @@
 					<div class="col-md-8">
 						<div class="form-group">
 							<label>Beschrijving</label>
-							<textarea class="form-control" name="Description" id="description"><p>"<?php echo (isset($productData["Description"]) ? $productData["Description"] :""); ?>"</p></textarea>
+							<textarea class="form-control" name="Description" id="description"><?php echo (isset($productData["Description"]) ? $productData["Description"] :""); ?></textarea>
 						</div>
 					</div>
 				</div>

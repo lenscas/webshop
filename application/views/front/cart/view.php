@@ -22,7 +22,7 @@
 					$totalTax	=0;
 					foreach($products as $key=>$value){
 				?>
-						<tr id="product<?php echo $value["Id"]?>">
+						<tr id="product<?php echo $value["Id"]?>" class="products">
 							<?php 
 								if(isset($value['Name'])){
 									$totalProductPrice	=	$value['Sell_price']*$value['want'];
@@ -37,8 +37,8 @@
 										<button class="btn btn-danger subtract">-</button>
 										<button class="btn btn-success add">+</button>
 									</td>
-									<td>&#8364; <?php echo $value['Sell_price'] ?></td>
-									<td>&#8364; <?php echo $totalProductPrice?></td>
+									<td> <input value="<?php echo $value['Sell_price'] ?>" type="hidden" class="productPrice">&#8364; <?php echo $value['Sell_price'] ?> <input type="hidden" value="<?php echo $value['Sell_price']/100*$value['taxAmount']; ?>" class="tax"></td>
+									<td class="totalPrice">&#8364; <?php echo $totalProductPrice?></td>
 									<td><button type="button" class="btn btn-danger delete"><span class="fa fa-times"></span></button></td>
 							<?php
 								} else {
@@ -59,17 +59,17 @@
 				?>
 						<tr >
 							<td colspan="4"></td>
-							<td style="border-top:solid 2px black">Bruto totaal bedrag</td>
-							<td style="border-top:solid 2px black"><?php echo $total ?></td>
+							<td style="border-top:solid 2px black" >Sub-totaal bedrag</td>
+							<td style="border-top:solid 2px black" id="subTotal"><?php echo $total ?></td>
 						</tr>
 						<tr>
 							<td colspan="4"></td>
 							<td>Totaal BTW</td>
-							<td><?php echo $totalTax ?></td>
+							<td id="totalTax"><?php echo $totalTax ?></td>
 						</tr>
 							<td colspan="4"></td>
 							<td>Netto totaal bedrag</td>
-							<td><?php echo $total+$totalTax?></td>
+							<td id="nettoTotalPrice"><?php echo $total+$totalTax?></td>
 						</tr>
 					</tbody>
 				</table>
@@ -107,6 +107,7 @@
 			success:function (){
 				var element= $("#"+idList[0]).find(".want")
 				changeWant("up",element)
+				update($("#"+idList[0]));
 			}
 			
 		})
@@ -118,6 +119,7 @@
 		success:function (){
 				var element= $("#"+idList[0]).find(".want")
 				changeWant("down",element)
+				update($("#"+idList[0]));
 			}
 		})
 	})
@@ -128,9 +130,38 @@
 		success:function (){
 				var element= $("#"+idList[0]).find(".want")
 				$(element).empty().html(0)
+				update($("#"+idList[0]));
 			}
 		})
+		
 	})
+	
+	function update(row){
+		console.log(row)
+		var totalCost		=0;
+		var productAmount	=0;
+		var productTax		=0;
+		var totalTax		=0;
+		var taxAmount		=0;
+		
+		var amount		=	parseFloat($(row).find(".want").html())
+		var costProduct	=	parseFloat($(row).find(".productPrice").val())
+		var newCost		=	amount*costProduct
+		
+		$(row).find(".totalPrice").empty().html(newCost)
+		$(".products").each(function(){
+			productAmount	=	parseFloat($(this).find(".want").html())
+			tax				=	parseFloat($(this).find(".tax").val())
+			console.log(tax)
+			productCost		=	parseFloat($(this).find(".productPrice").val())
+			totalTax		=	totalTax+(tax*productAmount);
+			totalCost		=	totalCost+(productAmount*productCost)
+		})
+		$("#subTotal").empty().html(totalCost)
+		$("#totalTax").empty().html(totalTax)
+		$("#nettoTotalPrice").empty().html((totalCost+totalTax).toFixed(2))
+		
+	}
 	
 
 </script>

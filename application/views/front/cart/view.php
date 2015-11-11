@@ -32,7 +32,7 @@
 							?>
 									<td><img style="width:100%;" src="<?php echo base_url($value['Picpath'])?>"></td>
 									<td><?php echo $value['Name'] ?> </td>
-									<td class="want"><?php echo $value['want']?></td>
+									<td ><input class="want" type="text" value="<?php echo $value['want']?>"></td>
 									<td>
 										<button class="btn btn-danger subtract">-</button>
 										<button class="btn btn-success add">+</button>
@@ -86,12 +86,12 @@
 </div>
 <script>
 	function changeWant(way,element){
-		var text= $(element).html()
+		var text= $(element).val()
 		if(way=="up"){
-			$(element).empty().html(Number(text)+1)
+			$(element).val(Number(text)+1)
 		} else {
 			if(text>0){
-				$(element).empty().html(Number(text)-1)
+				$(element).val(Number(text)-1)
 			}
 		}
 	}
@@ -135,30 +135,39 @@
 		})
 		
 	})
-	
+	$(".want").on("change",function(){
+		var idList=returnId(this)
+		console.log(idList)
+		$.ajax({
+		url: "<?php echo base_url("index.php/cart/ajax/update")?>/"+idList[1]+"/"+$(this).val(),
+		success:function (){
+				var element= $("#"+idList[0]).find(".want")
+				$(element).empty().html(0)
+				update($("#"+idList[0]));
+			}
+		})
+	})
 	function update(row){
-		console.log(row)
 		var totalCost		=0;
 		var productAmount	=0;
 		var productTax		=0;
 		var totalTax		=0;
 		var taxAmount		=0;
 		
-		var amount		=	parseFloat($(row).find(".want").html())
+		var amount		=	parseFloat($(row).find(".want").val())
 		var costProduct	=	parseFloat($(row).find(".productPrice").val())
 		var newCost		=	amount*costProduct
 		
-		$(row).find(".totalPrice").empty().html(newCost)
+		$(row).find(".totalPrice").empty().html(newCost.toFixed(2))
 		$(".products").each(function(){
-			productAmount	=	parseFloat($(this).find(".want").html())
+			productAmount	=	parseFloat($(this).find(".want").val())
 			tax				=	parseFloat($(this).find(".tax").val())
-			console.log(tax)
 			productCost		=	parseFloat($(this).find(".productPrice").val())
 			totalTax		=	totalTax+(tax*productAmount);
 			totalCost		=	totalCost+(productAmount*productCost)
 		})
-		$("#subTotal").empty().html(totalCost)
-		$("#totalTax").empty().html(totalTax)
+		$("#subTotal").empty().html(totalCost.toFixed(2))
+		$("#totalTax").empty().html(totalTax.toFixed(2))
 		$("#nettoTotalPrice").empty().html((totalCost+totalTax).toFixed(2))
 		
 	}

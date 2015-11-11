@@ -12,6 +12,10 @@ class Cart_ajax extends CI_Controller {
 		$this->load->model("front/Cart_model");
 		$this->Cart_model->deleteFromCart($id);
 	}
+	public function update($id,$amount){
+		$this->load->model("front/Cart_model");
+		$this->Cart_model->updateCart($id,$amount);
+	}
 
 
 

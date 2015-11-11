@@ -75,9 +75,10 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['cart/add/(:any)']	=	'front/Cart/add/$1';
 		$route['cart/view']			=	'front/Cart/seeCart';
 	//cart-ajax calls
-		$route['cart/ajax/add/(:any)']		=	'front/Cart_ajax/add/$1';
-		$route['cart/ajax/subtract/(:any)']	=	'front/Cart_ajax/subtract/$1';
-		$route['cart/ajax/delete/(:any)']	=	'front/Cart_ajax/delete/$1';
+		$route['cart/ajax/add/(:any)']				=	'front/Cart_ajax/add/$1';
+		$route['cart/ajax/subtract/(:any)']			=	'front/Cart_ajax/subtract/$1';
+		$route['cart/ajax/delete/(:any)']			=	'front/Cart_ajax/delete/$1';
+		$route['cart/ajax/update/(:any)/(:any)']	=	'front/Cart_ajax/update/$1/$2';
 	//orders
 		$route['makeOrder']			=	'front/Orders/makeOrder';
 		$route['order/ajax/view']	=	'front/Order/loadHistory' ;
@@ -98,9 +99,8 @@ $route['testHeader/user']	=	'testheader/user';
 	//viewing products
 	
 	//editing the products list
-		$route['admin/products/add']	=	"back/Products/addProduct";
-	//editing products
-		$route['admin/products/edit/(:any)']    = "back/Products/editProduct/$1";
+		$route['admin/products/add']			=	"back/Products/addProduct";
+		$route['admin/products/edit/(:any)']	=	"back/Products/editProduct/$1";
 	//categories
 		//inserting categories
 			$route['admin/categories/add']	=	"back/Categories/insertCategory";
@@ -108,8 +108,12 @@ $route['testHeader/user']	=	'testheader/user';
 			$route['admin/categories/disable']	=	"back/Categories/showCategoriesForDelete";
 			$route['admin/categories/ajax/delete/(:any)/(:any)'] = "back/CategoriesAjax/disable/$1/$2";
 	//viewing orders
-		$route['admin/orders/view']	=	"back/Orders/viewOrder";
+		$route['admin/orders/view']				=	"back/Orders/viewOrder";
 		$route['admin/orders/ajax/getorders']	= "back/Ajax_orders/GetAllOrders";
+	//RMA's
+		//viewing rma's
+		$route["admin/rma/view"]		=	"back/RMAs/view";
+		$route['admin/rma/ajax/getrma']	=	"back/RMA_ajax/getAllRMA";
 		
 //general ajax-calls
 	//products

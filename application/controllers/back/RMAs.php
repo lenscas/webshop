@@ -5,6 +5,7 @@ class RMAs extends CI_Controller {
 		$this->load->model("back/Defaults_model");
 		$headerData=$this->Defaults_model->loadHeaderData();
 		$this->load->view("back/defaults/back-header.php",$headerData);
+		$this->load->view("back/defaults/menu.php");
 	}
 	public function view(){
 		$this->load->view("back/rma/view");

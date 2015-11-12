@@ -43,6 +43,15 @@
 				<ul class="treeview-menu">
 					<li><a href="<?php echo base_url("index.php/admin/categories/add") ?>">Toevoegen</a></li>
 				</ul>
+				<li class="treeview">
+				<a href="#">
+					<i class="fa fa-pie-chart"></i>
+					<span>RMA's</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+				<ul class="treeview-menu">
+					<li><a href="<?php echo base_url("index.php/admin/rma/view") ?>">Bekijken</a></li>
+				</ul>
 			</ul>
         </section>
         <!-- /.sidebar -->

@@ -15,7 +15,7 @@ class RMA_ajax extends CI_Controller {
 				$string=$string.'["'.$value["Order_Id"].'",';
 				$string=$string.'"'.$value['Date'].'",';
 				$string=$string.'"<label class=\'label label-'.$value['Class'].'\'>'.$value['Name'].'</label>",';
-				$string=$string.'"'.'"';
+				$string=$string.'"<a href=\''.base_url("index.php/admin/rma/edit")."/".$value['RMAId'].'\' class=\'btn btn-primary\'><span class=\'fa fa-edit\'></span></a>'.'"';
 			}
 			$string=$string."]]}";
 

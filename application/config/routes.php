@@ -114,6 +114,8 @@ $route['testHeader/user']	=	'testheader/user';
 		//viewing rma's
 		$route["admin/rma/view"]		=	"back/RMAs/view";
 		$route['admin/rma/ajax/getrma']	=	"back/RMA_ajax/getAllRMA";
+		//edit rma 
+		$route["admin/rma/edit/(:any)"]	=	"back/RMAs/edit/$1";
 		
 //general ajax-calls
 	//products

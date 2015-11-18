@@ -79,8 +79,11 @@ Class Gusers_model extends CI_Model {
 		}
 
 		//encrypt password for edit profile
-		$this->load->library('encryption');
-		$data['Password']=$this->encryption->encrypt($data['Password']);
+		if (isset($data['Password'])) {
+			$this->load->library('encryption');
+			$data['Password']=$this->encryption->encrypt($data['Password']);
+		}
+		
 
 		//update the database
 		$this->db->where("Id",$userId);

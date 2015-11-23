@@ -65,12 +65,12 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['register']	=	'front/User/Register_User';
 		$route['editUser']	=	'front/User/editUser';
 		$route['logout']	=	'front/User/logout';
-
+		
 	//looking at products
-		$route['home']				=	'front/Products/index';
-		$route['product/(:any)']	=	'front/Products/product/$1';
-		$route['products/search']	=	'front/Products/search';
-
+		$route['home']						=	'front/Products/index';
+		$route['product/(:any)']			=	'front/Products/product/$1';
+		$route['products/search']			=	'front/Products/search';
+		$route["categories/(:any)/(:any)"]	=	"front/Products/ofCategory/$1/$2";
 	//cart
 		$route['cart/add/(:any)']	=	'front/Cart/add/$1';
 		$route['cart/view']			=	'front/Cart/seeCart';

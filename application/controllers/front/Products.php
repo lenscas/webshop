@@ -27,10 +27,20 @@ class Products extends CI_Controller {
 	public function product($id){
 		$this->load->model("general/Gproducts_model");
 		$productInfo=$this->Gproducts_model->getProductData($id);
-		/*print_r($productInfo);
-		exit(); */
+
 		$this->load->view("front/products/product.php",$productInfo);
 		$this->load->view("front/defaults/front-footer.php");	
+	}
+	public function ofCategory($table,$id){
+		if($table=="subCat"){
+			$table="Sub_Cat_Id";
+		}else {
+			$table="Cat_Id";
+		}
+		$this->load->model("front/Products_model");
+		$contentData['search']=$this->Products_model->getProductsOfCategory($table,$id);
+		$this->load->view("front/products/search",$contentData);
+		$this->load->view("front/defaults/front-footer.php");
 	}
 
 }

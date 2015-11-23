@@ -13,7 +13,8 @@ class Defaults extends CI_Model {
 			$accountText		="Login";
 			$logoutLink			=false;
 		}
-
+		$this->load->model("general/Gcategories_model");
+		$categories=$this->Gcategories_model-> loadAllCategories();
 		return array(	"title"			=>"test",
 						"accountText"	=>$accountText,
 						"warningMessage"=>"this is a test error message",
@@ -21,7 +22,8 @@ class Defaults extends CI_Model {
 						"warningVisible"=>true,
 						"logLink"		=>$loglink,
 						"logoutLink"	=>$logoutLink,
-						"registerHidden"=>$registerHidden
+						"registerHidden"=>$registerHidden,
+						"categories"	=>$categories
 					);
 	}
 

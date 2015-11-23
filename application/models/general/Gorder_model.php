@@ -13,16 +13,7 @@ class Gorder_model extends CI_Model {
 		$totalWeight=0;
 		foreach($products as $key=>$value){
 			$totalWeight=$totalWeight+($this->Gproducts_model->getProductWeigth($key)*$value);
-		}/*
-		$this->db->select("*");
-		$this->db->from("SendMethodRules");
-		$this->db->join("SendMethods","SendMethodRules.SendMethod_Id=SendMethods.Id");
-		$this->db->where("SendMethodRules.Min_Weight <",$totalWeight);
-		$this->db->where("SendMethodRules.Max_Weight >",$totalWeight);
-		$this->db->or_where("SendMethodRules.Max_Weight",NULL);
-		$this->db->where("Land_id",$country);
-		$query=$this->db->get();
-		$result=$query->result_array();*/
+		}
 		$this->db->select("*");
 		$this->db->from("SendMethods");
 		$query=$this->db->get();
@@ -75,29 +66,7 @@ class Gorder_model extends CI_Model {
 		$this->db->insert("orders",$orderData);
 		$orderId=$this->db->insert_id();
 		
-		foreach($cart as $key=>$value){
-			$this->db->select("*");
-			$this->db->from("stock");
-			$this->db->where("Products_Id",$key);
-			$query=$this->db->get();
-			$result=$query->result_array();
-			foreach($result as $stockKey=>$stockValue){
-				if($cart[$key]>0){
-					$insertData=$stockValue;
-					$insertData['Order_Id']=$orderId;
-					
-					$this->db->insert("productorders",$insertData);
-					$this->db->where($stockValue);
-					$this->db->delete();
-					$cart[$key]=$cart[$key]-1;
-				} else {
-					break;
-				}
-			}
-			foreach($cart as $key=>$value){
-				$this->db->insert("backOrders",array("Product_Id"=>$key,"Order_Id"=>$orderId));
-			}
-		}
+		
 		return $orderId;
 		
 	}
@@ -117,6 +86,32 @@ class Gorder_model extends CI_Model {
 			$totalTax		=	$totalTax+$tax;
 		}
 		return array("TotalPrice"=>$totalCost,"Tax"=>$totalTax);
+	}
+	public function cartToOrder($cart,$orderId){
+		foreach($cart as $key=>$value){
+			$this->db->select("*");
+			$this->db->from("stock");
+			$this->db->where("Products_Id",$key);
+			$query=$this->db->get();
+			$result=$query->result_array();
+			foreach($result as $stockKey=>$stockValue){
+				if($cart[$key]>0){
+					$insertData=$stockValue;
+					$insertData['Order_Id']=$orderId;
+				
+					$this->db->insert("productorders",$insertData);
+					$this->db->where($stockValue);
+					$this->db->delete();
+					$cart[$key]=$cart[$key]-1;
+				} else {
+					break;
+				}
+			}
+			foreach($cart as $key=>$value){
+				$this->db->insert("backOrders",array("Product_Id"=>$key,"Order_Id"=>$orderId));
+			}
+		}
+
 	}
 	public function getOrderById($id){
 		$this->db->select("*");

@@ -12,5 +12,18 @@ class Orders extends CI_Controller {
 		$this->load->view("back/orders/show.php");
 		$this->load->view("back/defaults/back-footer.php");
 	}
+	public function editOrder($orderId){
+		$this->load->model("back/Orders_model");
+		$contentData=array();
+		if($this->input->post()){
+			$error=$this->Orders_model->editOrder($this->input->post(),$orderId);
+			if(!$error){
+				$success=true;
+			}
+		}
+		$contentData=$this->Orders_model->getOrderData($orderId);
+		$this->load->view("back/orders/editOrder.php",$contentData);
+		$this->load->view("back/defaults/back-footer.php");
+	}
 }
 ?>

@@ -57,7 +57,6 @@ Class Gusers_model extends CI_Model {
 		if($data['Password'] && $data['PasswordCheck']){
 			if($data['Password']==$data["PasswordCheck"]){
 				$updatePassword=true;
-				$error="Wachtwoord velden zijn niet hetzelfde";
 			}
 		}
 		if(! $updatePassword){
@@ -79,9 +78,10 @@ Class Gusers_model extends CI_Model {
 		}
 
 		//encrypt password for edit profile
-		$this->load->library('encryption');
-		$data['Password']=$this->encryption->encrypt($data['Password']);
-
+		if(isset($data['Password'])){
+			$this->load->library('encryption');
+			$data['Password']=$this->encryption->encrypt($data['Password']);
+		}
 		//update the database
 		$this->db->where("Id",$userId);
 		$this->db->update("users",$data);
@@ -96,7 +96,6 @@ Class Gusers_model extends CI_Model {
 		if($correct){
 			return array("correct"=>true,"date"=>$data[2].'-'.$data[0].'-'.$data[1]);
 		}
-		
 	}
 
 	public function logout($sort){

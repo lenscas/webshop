@@ -1,9 +1,14 @@
 <script>
-	$(".linky").on("click",function(){
-		if ($(this).parent().children(".treeview-menu").length > 0 ) {
+	$(".linky").on("click",function(event){
+		console.log(this)
+		//console.log(event)
+		if ($(this).parent().parent().children(".treeview-menu").length > 0 ) {
 			 event.preventDefault();
+			 //preventDefault();
 		}
-		$(this).parent().children(".treeview-menu").each(function(i,element){
+		console.log($(this).parent().parent())
+		$(this).parent().parent().children(".treeview-menu").each(function(i,element){
+				console.log(element)
 				if($(element).is(":hidden")){
 					$(element).show()
 				} else {

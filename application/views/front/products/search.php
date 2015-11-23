@@ -45,7 +45,7 @@
 		<?php 
 			$times++;
 	} ?>
-		<div>
+		</div>
 	</div>
 </div>
 

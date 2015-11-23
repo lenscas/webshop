@@ -1,35 +1,22 @@
 <?php
-$test=array(0=>array("url"=>"test1",
-			"symbol"=>"testSymbol1",
-			"name"=>"testName1",
-			"subCatergory"=>array(0=>array("url"=>"test2",
-									"symbol"=>"testSymbol2",
-									"name"=>"testName2",
-									"subCatergory"=>array(0=>array("url"=>"test4",
-																	"symbol"=>"testSymbol4",
-																	"name"=>"testName4",))
-																	)
-								)
-					),
-			1=>array("url"=>"test3",
-			"symbol"=>"testSymbol3",
-			"name"=>"testName3",
-				)
-			);
-function writeCategory($categories){ 
+function writeCategory($categories,$first=false){ 
+	$extra="subCat";
+	if($first){
+		$extra="category";
+	}
 	foreach($categories as $key => $category){
 
 	?>
 		<li style="background-color:#ffffff;" class="treeview rootcat categoriesNavItem" >
-			<a href="<?php echo base_url($category["url"]) ?>" style="color:#348ED8" class="linky">
-				<i style="color:;" class="fa <?php echo $category["symbol"] ?>"></i>
-				<span style="color:#3c8dbc;"><?php echo $category["name"] ?></span>
+			<a href="<?php echo base_url("index.php/categories/".$extra."/".$category["Id"]) ?>" style="color:#348ED8">
+				<span style="color:#3c8dbc;"><?php echo $category["Name"] ?></span>
+				<i class="fa fa-angle-left fa-lg pull-right linky"></i>
 			</a>
 	<?php 
 		if(isset($category["subCatergory"])){
 			?>
 			<ul class="treeview-menu" style="background-color:#ffffff;" hidden>
-			<?php writeCategory($category["subCatergory"],"hidden"); ?>
+			<?php writeCategory($category["subCatergory"],false); ?>
 			</ul>
 		</li>
 		<?php
@@ -200,7 +187,7 @@ function writeCategory($categories){
                         		<i class="fa fa-home" style="color:#348ED8;"></i> <span style="color:#348ED8;">Home pagina</span>
                     		</a>
                 		</li>
-						<?php writeCategory($test); ?>
+						<?php writeCategory($categories,true); ?>
 					</ul>
         		</section>
         	</div>

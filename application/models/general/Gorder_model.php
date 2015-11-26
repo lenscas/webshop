@@ -46,6 +46,7 @@ class Gorder_model extends CI_Model {
 		if($data['usedPlace']=="custom"){
 			$data['user']["Land_id"]=$data['country'];
 			$data['user']["Users_Id"]=$userId;
+			
 			$insertData['DeliverAddress_Id']=$this->CreateAdress($data['user']);
 		} else {
 			$insertData['DeliverAddress_Id']=$data['usedPlace'];
@@ -65,6 +66,7 @@ class Gorder_model extends CI_Model {
 		$orderData['Transaction_Id']=substr(preg_replace('/[^a-zA-Z0-9]+/', '', $helpVariable),0,35);
 		$this->db->insert("orders",$orderData);
 		$orderId=$this->db->insert_id();
+		$this->cartToOrder($cart,$orderId);
 		
 		
 		return $orderId;
@@ -107,6 +109,7 @@ class Gorder_model extends CI_Model {
 					break;
 				}
 			}
+			
 			foreach($cart as $key=>$value){
 				$this->db->insert("backOrders",array("Product_Id"=>$key,"Order_Id"=>$orderId));
 			}
@@ -120,5 +123,39 @@ class Gorder_model extends CI_Model {
 		$this->db->where("orders.Id",$id);
 		$query=$this->db->get();
 		return $query->row_array();
+	}
+	public function getOrderProducts($orderId){
+		$this->db->select("*");
+		$this->db->from("products");
+		$this->db->join("productorders","productorders.Product_Id=products.Id","left");
+		$this->db->join("backOrders","backOrders.Product_Id=products.Id","left");
+		$this->db->join("tax","products.Tax_Id=tax.Tax_Id");
+		$this->db->where("productorders.Order_Id",$orderId);
+		$this->db->or_where("backOrders.Order_Id",$orderId);
+		$query=$this->db->get();
+		$result=$this->compressProductsList($query->result_array());
+		return $result;
+	}
+	private function compressProductsList($products){
+		$compressed=array();
+		$productCounter=0;
+		$lastProductId=null;
+		$lastKey=0;
+		foreach($products as $key=>$value){
+			if($lastProductId==$value['Product_Id']){
+				$productCounter++;
+			}else{
+				if($lastProductId!=null){
+					$compressed[$lastKey]['amount']=$productCounter;
+					$lastKey++;
+				}
+				$productCounter=1;
+				$compressed[$lastKey]=$value;
+				$lastProductId=$value['Product_Id'];
+			}
+		}
+		$compressed[$lastKey]['amount']=$productCounter;
+		return $compressed;
+		
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 class Payment_model extends CI_Model {
-	public function getPaymentData($orderId){
+	public function getPaymentData($orderId,$edit=false){
 		$this->load->model("general/Gpayment_model");
 		$this->load->model("general/Gorder_model");
 		$data=$this->Gpayment_model->getMerchantData();

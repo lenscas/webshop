@@ -14,11 +14,13 @@ class Orders extends CI_Controller {
 	}
 	public function editOrder($orderId){
 		$this->load->model("back/Orders_model");
+		$this->load->model("general/Gorder_model");
 		$contentData=array();
 		if($this->input->post()){
 			$error=$this->Orders_model->editOrder($this->input->post(),$orderId);
 			if(!$error){
 				$success=true;
+				$this->load->view("back/mails/extraPayment.php",array("orderData"=>$this->Gorder_model->getOrderById($orderId)));
 			}
 		}
 		$contentData=$this->Orders_model->getOrderData($orderId);

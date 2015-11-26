@@ -74,5 +74,17 @@ class Order_model extends CI_Model {
 		}
 		return false;
 	}
+	public function getOrderByTransId($transId){
+		$this->load->model("general/Gorder_model");
+		$this->db->select("*,orders.Id as orderId");
+		$this->db->from("orders");
+		$this->db->where("orders.Transaction_Id",$transId);
+		$this->db->join("deliveraddress","deliveraddress.Id=orders.DeliverAddress_Id");
+		$query=$this->db->get();
+		$result['orderData']	=	$query->row_array();
+		print_r($result);
+		$result['products']		=	$this->Gorder_model->getOrderProducts($result['orderData']["orderId"]);
+		return $result;
+	}
 }
 

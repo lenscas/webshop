@@ -72,5 +72,15 @@ class Orders extends CI_Controller {
 		}
 		$this->load->view("front/defaults/front-footer.php");
 	}
+	public function payExtra($transactionId){
+		$this->load->model("front/Order_model");
+		$this->load->model("front/Payment_model");
+		$contentData=$this->Order_model->getOrderByTransId($transactionId);
+		$contentData['paymentData']=$this->Payment_model->getPaymentData($contentData['orderData']['orderId']);
+		print_r($contentData['paymentData']);
+		$this->load->view("front/orders/payExtra",$contentData);
+		$this->load->view("front/defaults/front-footer");
+		
+	}
 	
 }

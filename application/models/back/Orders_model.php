@@ -9,51 +9,22 @@ class Orders_model extends CI_Model {
 		return $query->result_array();
 	}
 	public function getOrderData($orderId){
+		$this->load->model("general/Gorder_model");
 		$this->db->select("*");
 		$this->db->from("orders");
 		$this->db->where("orders.Id",$orderId);
 		$this->db->join("deliveraddress","deliveraddress.Id=orders.DeliverAddress_Id");
 		$query=$this->db->get();
 		$result['orderData']	=	$query->row_array();
-		$result['products']		=	$this->getOrderProducts($orderId);
+		$result['products']		=	$this->Gorder_model->getOrderProducts($orderId);
 		return $result;
 	}
-	public function getOrderProducts($orderId){
-		$this->db->select("*");
-		$this->db->from("products");
-		$this->db->join("productorders","productorders.Product_Id=products.Id","left");
-		$this->db->join("backOrders","backOrders.Product_Id=products.Id","left");
-		$this->db->join("tax","products.Tax_Id=tax.Tax_Id");
-		$this->db->where("productorders.Order_Id",$orderId);
-		$this->db->or_where("backOrders.Order_Id",$orderId);
-		$query=$this->db->get();
-		$result=$this->compressProductsList($query->result_array());
-		return $result;
-		
-	}
-	public function compressProductsList($products){
-		$compressed=array();
-		$productCounter=0;
-		$lastProductId=null;
-		$lastKey=0;
-		foreach($products as $key=>$value){
-			if($lastProductId==$value['Product_Id']){
-				$productCounter++;
-			}else{
-				if($lastProductId!=null){
-					$compressed[$lastKey]['amount']=$productCounter;
-					$lastKey++;
-				}
-				$productCounter=1;
-				$compressed[$lastKey]=$value;
-				$lastProductId=$value['Product_Id'];
-			}
-		}
-		$compressed[$lastKey]['amount']=$productCounter;
-		return $compressed;
-		
-	}
+
+	
 	public function editOrder($data,$orderId){
+		$this->db->where("Id",$orderId);
+		$helpVariable=mt_rand(0,1000) . 'x' . date('His');
+		$this->db->update("orders",array("Transaction_Id"=>substr(preg_replace('/[^a-zA-Z0-9]+/', '', $helpVariable),0,35)));
 		//remove all the old values from the database
 		$this->db->where("Order_Id",$orderId);
 		$this->db->delete("backOrders");

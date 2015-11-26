@@ -8,5 +8,5 @@
 	function doAutoSubmit() {
 	 	document.forms.checkout.submit(); 
 	} 
-	setTimeout('doAutoSubmit()', 100); 
+	//setTimeout('doAutoSubmit()', 100); 
 </script>

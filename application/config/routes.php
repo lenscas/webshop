@@ -84,6 +84,8 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['order/ajax/view']	=	'front/Order/loadHistory' ;
 		//payment
 			$route['orders/success']	=	'front/Orders/payOrder';
+		//payment after edit
+			$route['orders/payExtra/(:any)']	=	"front/Orders/payExtra/$1";
 	//orders ajax
 		$route['ajax/getShipmentOption']	=	"front/Orders_ajax/getSendMethods";
 		$route['ajax/getShipmentCosts']		=	"front/Orders_ajax/getSendCost";

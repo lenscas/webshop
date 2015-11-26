@@ -50,6 +50,12 @@
 										<td><input readonly type="text" value="<?php echo $addressData['Street'] ?>"></td>
 										<td><input readonly type="text" value="<?php echo $addressData['HomeNumber']?>"></td>
 									</tr>
+									<tr>
+										<td>Email address</td>
+									</tr>
+									<tr>
+										<td><input readonly type="text" value="<?php echo $addressData["MailAdress"] ?>"></td>
+									</tr>
 								</table>
 								<table style="max-width:100%">
 									<tr>
@@ -108,6 +114,12 @@
 											echo '<option value="'.$value['Id'].'">'.$value['name'].'</option>';
 										}
 									?>
+								</tr>
+								<tr>
+									<td>Email address</td>
+								</tr>
+								<tr>
+									<td><input type="text" name="user[MailAdress]"></td>
 								</tr>
 							</table>
 						</div>

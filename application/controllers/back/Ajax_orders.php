@@ -14,11 +14,11 @@ class Ajax_orders extends CI_Controller {
 			} else {
 				$first=false;
 			}
-			$string=$string.'["'.$value["Id"].'",';
+			$string=$string.'["'.$value["orderId"].'",';
 			$string=$string.'"'.$value['Firstname'].'",';
 			$string=$string.'"'.$value['Date'].'",';
 			$string=$string.'"<label class=\'label label-'.$value['Class'].'\'>'.$value['Name'].'</label>",';
-			$string=$string.'"'.'"';
+			$string=$string.'"<a href=\''.base_url("index.php/admin/orders/edit")."/".$value["orderId"].'\' class=\'btn btn-primary\'><span class=\'fa fa-edit\'></span></a>"';
 		}
 		$string=$string."]]}";
 

@@ -82,7 +82,6 @@ class Order_model extends CI_Model {
 		$this->db->join("deliveraddress","deliveraddress.Id=orders.DeliverAddress_Id");
 		$query=$this->db->get();
 		$result['orderData']	=	$query->row_array();
-		print_r($result);
 		$result['products']		=	$this->Gorder_model->getOrderProducts($result['orderData']["orderId"]);
 		return $result;
 	}

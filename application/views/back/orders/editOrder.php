@@ -76,7 +76,8 @@
 										<button type="button" class="btn btn-success add">+</button>
 									</td>
 									<td> 
-										<input value="<?php echo $value['Sell_price'] ?>" type="disabled" name="<?php echo "products[".$key."][price]"?>" class="productPrice">
+										<?php echo $value['Sell_price'] ?>
+										<input value="<?php echo $value['Sell_price'] ?>" type="hidden" name="<?php echo "products[".$key."][price]"?>" class="productPrice">
 										<input type="hidden" value="<?php echo $value['Sell_price']/100*$value['Tax_Amount']; ?>" class="tax">	
 										<input type="hidden" class="taxProcent" value="<?php echo $value['Tax_Amount'] ?>">
 										<input type="hidden" value="<?php echo $value["Product_Id"]?>"name="<?php echo "products[".$key."][productId]"?>">

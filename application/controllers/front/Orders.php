@@ -12,6 +12,7 @@ class Orders extends CI_Controller {
 		$this->load->model("general/Gproducts_model");
 		$this->load->model("general/Gorder_model");
 		$this->load->model("front/Payment_model");
+		$this->load->model("front/Adressbook_model");
 		$cart=$this->Cart_model->getCart();
 		if(empty($cart)){
 			redirect("home");
@@ -23,7 +24,6 @@ class Orders extends CI_Controller {
 			$validPostData=$this->Order_model->checkValidPostData($this->input->post());
 			if(! $validPostData){
 				$contentData['error']="Er waren 1 of meer verplichte input velden niet correct ingevuld";
-				echo $contentData['error'];
 			} else{
 				$loadForm=false;
 				$id=$this->Gorder_model->InsertOrder($this->input->post(),$cart,$this->session->userId);
@@ -37,9 +37,12 @@ class Orders extends CI_Controller {
 				$contentData['products'][$times]['want']=$value;
 				$times++;
 			}
-			
+			if($this->session->has_userData("userId")){
+				$contentData['addresses']=$this->Adressbook_model->getUsersAdresses($this->session->userId);
+			}
 			$this->load->view("front/orders/createOrder",$contentData);
 		} else {
+			
 			$contentData=$this->Payment_model->getPaymentData($id);
 			$this->load->view("front/orders/orderMade",$contentData);
 		}

@@ -25,7 +25,7 @@ class Order_model extends CI_Model {
 		$this->load->model("general/Gorder_model");
 		$valid=false;
 		if($postData['usedPlace']!= "custom"){
-			$country=$this->Gorder_moddel->getCountryId($postData["usedPlace"]);
+			$country=$this->Gorder_model->getCountryId($postData["usedPlace"]);
 			if($country){
 				$valid=true;
 			}

@@ -79,6 +79,8 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['cart/ajax/subtract/(:any)']			=	'front/Cart_ajax/subtract/$1';
 		$route['cart/ajax/delete/(:any)']			=	'front/Cart_ajax/delete/$1';
 		$route['cart/ajax/update/(:any)/(:any)']	=	'front/Cart_ajax/update/$1/$2';
+	//add adress
+		$route['adress/add']	=	'front/Adressbook/add';
 	//orders
 		$route['makeOrder']			=	'front/Orders/makeOrder';
 		$route['order/ajax/view']	=	'front/Order/loadHistory' ;
@@ -98,17 +100,21 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['admin/login']	=	"back/Admins/logIn";
 	//home
 		$route['admin/home']	=	"back/Admins/dashboard";
-	//viewing products
-	
-	//editing the products list
-		$route['admin/products/add']			=	"back/Products/addProduct";
-		$route['admin/products/edit/(:any)']	=	"back/Products/editProduct/$1";
+	//products
+		//viewing
+			$route["admin/products/view"]			=	"back/Products/viewProducts";
+		//editing the products list
+			$route['admin/products/add']			=	"back/Products/addProduct";
+			$route['admin/products/edit/(:any)']	=	"back/Products/editProduct/$1";
 	//categories
 		//inserting categories
 			$route['admin/categories/add']	=	"back/Categories/insertCategory";
 		//disable/enable the categories
 			$route['admin/categories/disable']	=	"back/Categories/showCategoriesForDelete";
 			$route['admin/categories/ajax/delete/(:any)/(:any)'] = "back/CategoriesAjax/disable/$1/$2";
+		//linking products and categories 
+			$route["admin/categories/link/(:any)"]								=	"back/Categories/showCategoriesForLink/$1";
+			$route["admin/categories/ajax/link/update/(:any)/(:any)/(:any)"]	=	"back/CategoriesAjax/switchLink/$1/$2/$3";
 	//orders
 		//viewing Orders
 			$route['admin/orders/view']				=	"back/Orders/viewOrder";
@@ -125,6 +131,7 @@ $route['testHeader/user']	=	'testheader/user';
 //general ajax-calls
 	//products
 		$route['products/getProducts']			=	'general/Ajax_products/getProducts';
+		$route['products/getProducts/dataTable']=	'general/Ajax_products/getProducts/true';
 		$route['products/getProduct/(:any)']	=	"general/Ajax_products/getProductById/$1";
 	//autocomplete products
 		$route['products/autocomplete']	=	"general/Ajax_products/autocompleteProducts";

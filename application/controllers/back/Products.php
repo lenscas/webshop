@@ -99,5 +99,39 @@ class Products extends CI_Controller {
 		$this->load->view("back/products/add.php",$contentData);
 		$this->load->view("back/defaults/back-footer.php");
 	}
+
+	function updateStorage($productId) {
+		//initialize Array
+		$contentData=array();
+
+		//load model
+		$this->load->model("back/Products_model");
+		$this->load->model("general/Gproducts_model");
+		
+		$contentData['productData']=$this->Gproducts_model->getProductData($productId);
+
+
+		//array information
+		if ($this->input->post()) {
+			$data=$this->input->post();
+			$insertData=array();
+			for($times=0; $times<$data['amount'];$times++){
+				if(isset($data['ean'][$times])){
+					$insertData[$times]['Ean']=$data['ean'][$times];
+				}
+				$insertData[$times]['PurchasePrice']=$data['Sell_Price'];
+				$insertData[$times]['Products_Id']=$productId;
+
+			}
+			$this->Products_model->updateStorage($insertData);
+		} else {
+			# code...
+		}
+		
+		$this->load->view("back/products/addstock.php",$contentData);
+		$this->load->view("back/defaults/back-footer.php");
+	}
+
+
 }
 ?>

@@ -65,12 +65,12 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['register']	=	'front/User/Register_User';
 		$route['editUser']	=	'front/User/editUser';
 		$route['logout']	=	'front/User/logout';
-		
+
 	//looking at products
-		$route['home']						=	'front/Products/index';
-		$route['product/(:any)']			=	'front/Products/product/$1';
-		$route['products/search']			=	'front/Products/search';
-		$route["categories/(:any)/(:any)"]	=	"front/Products/ofCategory/$1/$2";
+		$route['home']				=	'front/Products/index';
+		$route['product/(:any)']	=	'front/Products/product/$1';
+		$route['products/search']	=	'front/Products/search';
+
 	//cart
 		$route['cart/add/(:any)']	=	'front/Cart/add/$1';
 		$route['cart/view']			=	'front/Cart/seeCart';
@@ -84,8 +84,6 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['order/ajax/view']	=	'front/Order/loadHistory' ;
 		//payment
 			$route['orders/success']	=	'front/Orders/payOrder';
-		//payment after edit
-			$route['orders/payExtra/(:any)']	=	"front/Orders/payExtra/$1";
 	//orders ajax
 		$route['ajax/getShipmentOption']	=	"front/Orders_ajax/getSendMethods";
 		$route['ajax/getShipmentCosts']		=	"front/Orders_ajax/getSendCost";
@@ -99,7 +97,8 @@ $route['testHeader/user']	=	'testheader/user';
 	//home
 		$route['admin/home']	=	"back/Admins/dashboard";
 	//viewing products
-	
+	//editing the storage	
+		$route['admin/products/addstock/(:any)']		=		"back/Products/updateStorage/$1";
 	//editing the products list
 		$route['admin/products/add']			=	"back/Products/addProduct";
 		$route['admin/products/edit/(:any)']	=	"back/Products/editProduct/$1";
@@ -109,12 +108,9 @@ $route['testHeader/user']	=	'testheader/user';
 		//disable/enable the categories
 			$route['admin/categories/disable']	=	"back/Categories/showCategoriesForDelete";
 			$route['admin/categories/ajax/delete/(:any)/(:any)'] = "back/CategoriesAjax/disable/$1/$2";
-	//orders
-		//viewing Orders
-			$route['admin/orders/view']				=	"back/Orders/viewOrder";
-			$route['admin/orders/ajax/getorders']	=	"back/Ajax_orders/GetAllOrders";
-		//edit Orders
-			$route['admin/orders/edit/(:any)']		=	"back/Orders/editOrder/$1";
+	//viewing orders
+		$route['admin/orders/view']				=	"back/Orders/viewOrder";
+		$route['admin/orders/ajax/getorders']	= "back/Ajax_orders/GetAllOrders";
 	//RMA's
 		//viewing rma's
 		$route["admin/rma/view"]		=	"back/RMAs/view";
@@ -124,8 +120,5 @@ $route['testHeader/user']	=	'testheader/user';
 		
 //general ajax-calls
 	//products
-		$route['products/getProducts']			=	'general/Ajax_products/getProducts';
-		$route['products/getProduct/(:any)']	=	"general/Ajax_products/getProductById/$1";
-	//autocomplete products
-		$route['products/autocomplete']	=	"general/Ajax_products/autocompleteProducts";
+		$route['products/getProducts']	=	'general/Ajax_products/getProducts';
 

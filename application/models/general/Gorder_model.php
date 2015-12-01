@@ -6,7 +6,7 @@ class Gorder_model extends CI_Model {
 		$this->db->where("Id",$placeId);
 		$query=$this->db->get();
 		$result=$query->row_array();
-		return $result['Land'];
+		return $result['Land_Id'];
 	}
 	public function GetSendMethods($products,$country){
 		$this->load->model("general/Gproducts_model");
@@ -73,6 +73,7 @@ class Gorder_model extends CI_Model {
 		
 	}
 	public function CreateAdress($data){
+		unset($data['Users_Id']);
 		$this->db->insert('deliveraddress',$data);
 		return $this->db->insert_id();
 	}

@@ -99,5 +99,9 @@ class Products extends CI_Controller {
 		$this->load->view("back/products/add.php",$contentData);
 		$this->load->view("back/defaults/back-footer.php");
 	}
+	public function viewProducts(){
+		$this->load->view("back/products/view.php");
+		$this->load->view("back/defaults/back-footer.php");
+	}
 }
 ?>

@@ -94,12 +94,15 @@ Class Gusers_model extends CI_Model {
 		//0=the month,1=the day,2 = the year 
 		$correct=false;
 		if(count($data)==3){
-			$correct=checkdate ( $data[0] , $data[1] , $data[2] );
+			$correct=checkdate ($data[0] , $data[1] , $data[2]);
 		}
 		if($correct){
 			return array("correct"=>true,"date"=>$data[2].'-'.$data[0].'-'.$data[1]);
 		}
-		
+	}
+
+	public function viewDate($stringDate){
+		date("d/m/Y", strtotime($str));
 	}
 
 	public function logout($sort){

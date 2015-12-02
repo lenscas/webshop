@@ -15,5 +15,11 @@ class Products_model extends CI_Model {
 		$this->db->where("products.Id",$productId);
 		$this->db->update("products",$data);
 	}
+
+	public function updateStorage($data){
+		$this->db->insert_batch("stock",$data);
+	}
+
+
 }
 ?>

@@ -59,19 +59,19 @@ $route['testHeader/admin']	=	'testheader/admin';
 $route['testHeader/user']	=	'testheader/user';
 
 //user 
+	//login
+		$route['login']		=	'front/User/login_User';
+		$route['register']	=	'front/User/Register_User';
+		$route['editUser']	=	'front/User/editUser';
+		$route['logout']	=	'front/User/logout';
 	//user account
-		//acount
-			$route['login']			=	'front/User/login_User';
-			$route['register']		=	'front/User/Register_User';
-			$route['editUser']		=	'front/User/editUser';
-			$route['logout']		=	'front/User/logout';
 		//profile
 			$route['user/profile']	=	"front/User/showProfile";
 	//looking at products
-		$route['home']						=	'front/Products/index';
-		$route['product/(:any)']			=	'front/Products/product/$1';
-		$route['products/search']			=	'front/Products/search';
-		$route["categories/(:any)/(:any)"]	=	"front/Products/ofCategory/$1/$2";
+		$route['home']				=	'front/Products/index';
+		$route['product/(:any)']	=	'front/Products/product/$1';
+		$route['products/search']	=	'front/Products/search';
+
 	//cart
 		$route['cart/add/(:any)']	=	'front/Cart/add/$1';
 		$route['cart/view']			=	'front/Cart/seeCart';
@@ -87,8 +87,6 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['order/ajax/view']	=	'front/Order/loadHistory' ;
 		//payment
 			$route['orders/success']	=	'front/Orders/payOrder';
-		//payment after edit
-			$route['orders/payExtra/(:any)']	=	"front/Orders/payExtra/$1";
 	//orders ajax
 		$route['ajax/getShipmentOption']	=	"front/Orders_ajax/getSendMethods";
 		$route['ajax/getShipmentCosts']		=	"front/Orders_ajax/getSendCost";
@@ -107,6 +105,8 @@ $route['testHeader/user']	=	'testheader/user';
 		//editing the products list
 			$route['admin/products/add']			=	"back/Products/addProduct";
 			$route['admin/products/edit/(:any)']	=	"back/Products/editProduct/$1";
+		//editing the storage	
+			$route['admin/products/addstock/(:any)']		=		"back/Products/updateStorage/$1";
 	//categories
 		//inserting categories
 			$route['admin/categories/add']	=	"back/Categories/insertCategory";

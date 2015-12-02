@@ -2,7 +2,7 @@
 class Defaults extends CI_Model {
 	public function headerData(){
 		if($this->session->has_userdata("userId")){
-			$loglink			="editUser";
+			$loglink			="user/profile";
 			$registerHidden		=true;
 			$accountText		="Profiel";
 			$logoutLink			=true;

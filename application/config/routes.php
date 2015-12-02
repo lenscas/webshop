@@ -59,13 +59,14 @@ $route['testHeader/admin']	=	'testheader/admin';
 $route['testHeader/user']	=	'testheader/user';
 
 //user 
-
-	//login
-		$route['login']		=	'front/User/login_User';
-		$route['register']	=	'front/User/Register_User';
-		$route['editUser']	=	'front/User/editUser';
-		$route['logout']	=	'front/User/logout';
-		
+	//user account
+		//acount
+			$route['login']			=	'front/User/login_User';
+			$route['register']		=	'front/User/Register_User';
+			$route['editUser']		=	'front/User/editUser';
+			$route['logout']		=	'front/User/logout';
+		//profile
+			$route['user/profile']	=	"front/User/showProfile";
 	//looking at products
 		$route['home']						=	'front/Products/index';
 		$route['product/(:any)']			=	'front/Products/product/$1';

@@ -29,14 +29,16 @@ class Orders_model extends CI_Model {
 		$this->db->where("Order_Id",$orderId);
 		$this->db->delete("backOrders");
 		
-		$this->db->select("Product_Id");
+		$this->db->select("Product_Id as Products_Id,Date,Ean,PurchasePrice");
 		$this->db->from("productorders");
 		$this->db->where("Order_Id",$orderId);
 		$query=$this->db->get();
 		$rows = $query->result_array();
 		$this->db->where("Order_Id",$orderId);
 		$this->db->delete("productorders");
-		
+		if($rows){
+			$this->db->insert_batch("stock",$rows);
+		}
 		foreach($data['products'] as $key=>$value){
 			//exit;
 			/*$this->db->select("count(*) as count");
@@ -47,12 +49,12 @@ class Orders_model extends CI_Model {
 			*/
 			//Products_Id,PurchasePrice,Ean,
 			for($times=0;$times<=$value['want'];$times++){
-				$this->db->select("Products_Id,PurchasePrice,Ean");
+				$this->db->select("Products_Id as Product_Id,PurchasePrice,Ean");
 				$this->db->from("stock");
 				$this->db->where("Products_Id",$value['productId']);
 				$this->db->limit(1);
 				$query=$this->db->get();
-				$result=$query->result_array();
+				$result=$query->row_array();
 				if($result){
 					$this->db->insert("productorders",$result);
 				} else {

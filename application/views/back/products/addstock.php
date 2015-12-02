@@ -1,9 +1,3 @@
-<script type="text/javascript">
-    tinymce.init({
-        selector: "#description"
-    });
-</script>
-
 <div class="content-wrapper">
 <!-- Content Header (Page header) -->
 	<section class="content-header">
@@ -13,7 +7,7 @@
 		<ol class="breadcrumb">
 			<li><a href="<?php echo base_url("index.php/admin/dashboard")?>"><i class="fa fa-dashboard"></i> Home</a></li>
 			<li><a href="<?php echo base_url("index.php/admin/products")?>"> Products</a></li>
-			<li class="active">Aanpassen</li>
+			<li class="active">Voorraad toevoegen</li>
 		</ol>
 	</section>
 	<section class="content">
@@ -35,11 +29,11 @@
 				<div class="box-body">
 					<div class="col-md-4">
 						<div class="form-group">
-							<label>Verkoop prijs</label>
+							<label>Inkoop prijs</label>
 							<input class="form-control" type="text" name="Sell_Price"  value="<?php echo (isset($productData["Sell_price"]) ? $productData["Sell_price"] :""); ?>">
 						</div>
 						<div class="form-group">
-							<label>Voorraad</label>
+							<label>Aantal nieuwe producten</label>
 							<input type="text" name="amount" id="amount">
 						</div>
 						<div id="eanContainer">

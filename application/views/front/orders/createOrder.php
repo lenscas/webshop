@@ -1,5 +1,5 @@
 <?php 
-	$addresses=array();
+	//$addresses=array();
 	$defaultPlace="custom";
 	$countries=array(array('Id'=>1,"name"=>"Nederland"));
 ?>
@@ -19,8 +19,8 @@
 						foreach($addresses as $key => $addressData){
 					?>
 						<div>
-							<button id="button<?php echo $addressData['placeId']?>" type="button" class="selectAdress btn btn-primary"><?php echo $addressData['addressName']?></button>
-							<div <?php if( ! $addressData['default']){echo "hidden";}?> class="adressData">
+							<button id="button<?php echo $addressData['placeId']?>" type="button" class="selectAdress btn btn-primary"><?php echo $addressData['Adress']?></button>
+							<div hidden class="adressData">
 								<table style="max-width:100%">
 									<tr>
 										<td>Voornaam</td>
@@ -28,9 +28,9 @@
 										<td>Achternaam</td>
 									</tr>
 									<tr>
-										<td><input readonly type="text" value="<?php echo $addressData['firstName'] ?>"></td>
-										<td><input readonly type="text" value="<?php echo $addressData['secondName'] ?>"></td>
-										<td><input readonly type="text" value="<?php echo $addressData['lastName'] ?>"></td>
+										<td><input readonly type="text" value="<?php echo $addressData['Firstname'] ?>"></td>
+										<td><input readonly type="text" value="<?php echo $addressData['SecondName'] ?>"></td>
+										<td><input readonly type="text" value="<?php echo $addressData['LastName'] ?>"></td>
 									</tr>
 								</table>
 								<table style="max-width:100%">
@@ -47,7 +47,7 @@
 										<td>Huisnummer</td>
 									</tr>
 									<tr>
-										<td><input readonly type="text" value="<?php echo $addressData['Street'] ?>"></td>
+										<td><input readonly type="text" value="<?php echo $addressData['Adress'] ?>"></td>
 										<td><input readonly type="text" value="<?php echo $addressData['HomeNumber']?>"></td>
 									</tr>
 									<tr>
@@ -140,7 +140,7 @@
 				<div id="paymentMethod" class="pages" hidden>
 					<label>Paypal</label>
 					<input type="radio" name="paymentMethod" id="paypal" value="paypal">
-				</div>
+				</div>http://localhost/webshop/index.phphome
 				<div id="summary" class="pages" hidden>
 					<table class="table">
 							<thead>
@@ -182,7 +182,7 @@
 							</tr>
 							<tr>
 								<td colspan="3"></td>
-								<td>Totaal BTW</td>
+								<td>Totaal BTW</td>http://localhost/webshop/index.phphome
 								<td><?php echo $totalTax ?><input id="tax" type="hidden" value="<?php echo $totalTax ?>"></td>
 							</tr>
 								<td>Betaal methode:</td>

@@ -26,4 +26,13 @@ class Categories extends CI_Controller {
 		$this->load->view('back/categories/disable',$contentData);
 		$this->load->view("back/defaults/back-footer.php");
 	}
+	public function showCategoriesForLink($productId){
+		$this->load->model("general/Gcategories_model");
+		$this->load->model("back/Categories_model");
+		$categories=$this->Gcategories_model->loadAllCategories();
+		$contendData["categoriesList"]=$this->Categories_model->checkForLinks($categories,$productId);
+		$contendData['productId']=$productId;
+		$this->load->view('back/categories/link',$contendData);
+		$this->load->view("back/defaults/back-footer.php");
+	}
 }

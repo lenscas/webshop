@@ -66,7 +66,14 @@
 			$this->output->set_header('refresh:3;url=login');
 			$this->load->view('front/defaults/front-footer.php');
 		}
-
+		public function showProfile(){
+			if(!$this->session->has_userData("userId")){
+				redirect("home");
+			}
+			$this->load->view("front/users/profile");
+			$this->load->view("front/defaults/front-footer");
+		
+		}
 }
 
 

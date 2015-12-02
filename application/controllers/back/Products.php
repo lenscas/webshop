@@ -99,7 +99,7 @@ class Products extends CI_Controller {
 		$this->load->view("back/products/add.php",$contentData);
 		$this->load->view("back/defaults/back-footer.php");
 	}
-<<<<<<< HEAD
+
 
 	function updateStorage($productId) {
 		//initialize Array
@@ -116,29 +116,35 @@ class Products extends CI_Controller {
 		if ($this->input->post()) {
 			$data=$this->input->post();
 			$insertData=array();
-			for($times=0; $times<$data['amount'];$times++){
-				if(isset($data['ean'][$times])){
-					$insertData[$times]['Ean']=$data['ean'][$times];
-				}
-				$insertData[$times]['PurchasePrice']=$data['Sell_Price'];
-				$insertData[$times]['Products_Id']=$productId;
 
+			if (isset($data['amount']) && isset($data['Sell_Price']) ) {
+				if ($data['amount']>0 && $data['Sell_Price']>=0)  {
+					for($times=0; $times<$data['amount'];$times++){
+						if(isset($data['ean'][$times])){
+							$insertData[$times]['Ean']=$data['ean'][$times];
+						}
+						$insertData[$times]['PurchasePrice']=$data['Sell_Price'];
+						$insertData[$times]['Products_Id']=$productId;
+						$contentData["success"]="De voorraad is toegevoegd.";
+						$this->Products_model->updateStorage($insertData);
+					}
+				} 
 			}
-			$this->Products_model->updateStorage($insertData);
-		} else {
-			# code...
-		}
-		
+
+			if(!isset($contentData["success"])){
+				$contentData["error"]="Er zijn 1 of meerdere velden niet goed ingevuld";
+			}
+			
+		} 
 		$this->load->view("back/products/addstock.php",$contentData);
 		$this->load->view("back/defaults/back-footer.php");
 	}
 
 
-=======
 	public function viewProducts(){
 		$this->load->view("back/products/view.php");
 		$this->load->view("back/defaults/back-footer.php");
 	}
->>>>>>> dev
+
 }
 ?>

@@ -125,8 +125,8 @@ class Products extends CI_Controller {
 						$insertData[$times]['PurchasePrice']=$data['Sell_Price'];
 						$insertData[$times]['Products_Id']=$productId;
 						$contentData["success"]="De voorraad is toegevoegd.";
-						$this->Products_model->updateStorage($insertData);
 					}
+					$this->Products_model->updateStorage($insertData);
 				} 
 			}
 

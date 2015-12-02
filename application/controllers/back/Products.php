@@ -99,7 +99,10 @@ class Products extends CI_Controller {
 		$this->load->view("back/products/add.php",$contentData);
 		$this->load->view("back/defaults/back-footer.php");
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/dev
 
 	function updateStorage($productId) {
 		//initialize Array
@@ -140,11 +143,17 @@ class Products extends CI_Controller {
 		$this->load->view("back/defaults/back-footer.php");
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/dev
 	public function viewProducts(){
 		$this->load->view("back/products/view.php");
 		$this->load->view("back/defaults/back-footer.php");
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/dev
 }
 ?>

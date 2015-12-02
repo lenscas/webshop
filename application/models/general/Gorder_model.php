@@ -100,11 +100,16 @@ class Gorder_model extends CI_Model {
 			foreach($result as $stockKey=>$stockValue){
 				if($cart[$key]>0){
 					$insertData=$stockValue;
+					unset($insertData["Id"]);
+					$insertData['Product_Id']=$stockValue["Products_Id"];
+					unset($insertData["Products_Id"]);
+					unset($insertData["Stock_Id"]);
 					$insertData['Order_Id']=$orderId;
 				
 					$this->db->insert("productorders",$insertData);
+					
 					$this->db->where($stockValue);
-					$this->db->delete();
+					$this->db->delete("stock");
 					$cart[$key]=$cart[$key]-1;
 				} else {
 					break;
@@ -112,7 +117,9 @@ class Gorder_model extends CI_Model {
 			}
 			
 			foreach($cart as $key=>$value){
-				$this->db->insert("backOrders",array("Product_Id"=>$key,"Order_Id"=>$orderId));
+				if($value){
+					$this->db->insert("backOrders",array("Product_Id"=>$key,"Order_Id"=>$orderId));
+				}
 			}
 		}
 
@@ -126,18 +133,65 @@ class Gorder_model extends CI_Model {
 		return $query->row_array();
 	}
 	public function getOrderProducts($orderId){
+		//old query that doesn't work because it returns duplicate rows'
+		/*
 		$this->db->select("*");
 		$this->db->from("products");
+		$this->db->where("pro")
 		$this->db->join("productorders","productorders.Product_Id=products.Id","left");
 		$this->db->join("backOrders","backOrders.Product_Id=products.Id","left");
 		$this->db->join("tax","products.Tax_Id=tax.Tax_Id");
 		$this->db->where("productorders.Order_Id",$orderId);
 		$this->db->or_where("backOrders.Order_Id",$orderId);
+		$this->db->group_by("backOrders.Order_Id");
+		$this->db->group_by("productorders.Order_Id");
 		$query=$this->db->get();
 		$result=$this->compressProductsList($query->result_array());
+		echo "<br>". $this->db->last_query();
+		print_r($result);
 		return $result;
+	*/
+		//get all the products
+		//I will need this 2 times and for both they need to be identical.
+		$selectedValues="
+	products.Sell_price,
+	Order_Id,
+	Product_Id,
+    Name,
+    Sell_Price,
+    products.Tax_Id,
+    Picpath,
+    weight,
+    fragile,
+    warranty,
+    tax.Tax_Id,
+    tax.Tax_Amount";
+		//UNION is not surpported by the active record class from code igniter therefor I need to write the quary by hand
+		$query=$this->db->query("SELECT 
+		productorders.Id,
+		".$selectedValues." 
+FROM `productorders`
+LEFT JOIN `products` 
+ON `productorders`.`Product_Id`=`products`.`Id`
+INNER JOIN `tax`
+ON 	tax.Tax_Id=products.Tax_Id
+WHERE `productorders`.`Order_Id` = '".$orderId."'
+UNION
+SELECT backOrders.Id, ".$selectedValues." 
+FROM `backOrders`
+LEFT JOIN `products` 
+ON `backOrders`.`Product_Id`=`products`.`Id`
+INNER JOIN `tax`
+ON 	tax.Tax_Id=products.Tax_Id
+WHERE`backOrders`.`Order_Id` = '".$orderId."'
+ORDER BY Product_Id
+");
+		$result=$this->compressProductsList($query->result_array());
+		return $result;
+	
 	}
 	private function compressProductsList($products){
+		echo $this->db->last_query();
 		$compressed=array();
 		$productCounter=0;
 		$lastProductId=null;

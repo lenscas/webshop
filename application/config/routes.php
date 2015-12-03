@@ -71,6 +71,7 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['home']				=	'front/Products/index';
 		$route['product/(:any)']	=	'front/Products/product/$1';
 		$route['products/search']	=	'front/Products/search';
+		$route['categories/(:any)/(:any)']	= "front/Products/ofCategory/$1/$2";
 
 	//cart
 		$route['cart/add/(:any)']	=	'front/Cart/add/$1';

@@ -18,6 +18,9 @@ class Adressbook extends CI_Controller {
 		if($data){
 			
 			$contentData['error']=$this->Adressbook_model->insertAdress($data,$this->session->userId);
+			if(!$contentData['error']){
+				$contentData['success']=true;
+			}
 		}
 		$this->load->view("front/adressbook/add",$contentData);
 		$this->load->view("front/defaults/front-footer.php");

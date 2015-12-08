@@ -8,7 +8,7 @@ class Adressbook_model extends CI_Model {
 	}
 	public function insertAdress($data,$userId){
 		foreach($data as $key=>$value){
-			if(!$value){
+			if(!$value && $key!="SecondName"){
 				return "er waren 1 of meerdere velden niet ingevuld";
 			}
 		}

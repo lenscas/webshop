@@ -1,4 +1,22 @@
 <div class="col-md-9">
+	<?php 
+		if(isset($error)){
+	?>
+		<div class="alert alert-danger">
+			<p><?php echo $error ?></p>
+		</div>
+	<?php
+		}
+	?>
+	<?php 
+		if(isset($success)){
+	?>
+		<div class="alert alert-success">
+			<p>Uw address is met success toegevoegd</p>
+		</div>
+	<?php
+	}
+	?>
 	<form method="post">
 		<div class="row">
 			<button class="pull-right btn btn-success">Opslaan</button>

@@ -9,13 +9,14 @@ function writeCategory($categories,$sort){
 			<table>
 				<tr class="bg-<?php if($category['hasLink']){echo "success";} else {echo "danger";}?>">
 					<td>
-						<p class="linky">
+						<p style="margin-right:10px">
 							<i style="color:;" class="fa fa-cross"></i>
 							<span style="color:#3c8dbc;"><?php echo $category["Name"] ?></span>
+							<span class="fa  fa-angle-left linky" style="cursor:pointer;">
 						</p>
 					</td>
 					<td>
-						<button class="btn btn-<?php if($category['hasLink']){echo "danger";}else { echo "success";} ?> btn-xs update" id="<?php echo $sort.$category['Id'] ?>"><?php if($category['hasLink']){echo "verwijderen";} else {echo "toevoegen";} ?></button>
+						<button class="btn btn-<?php if($category['hasLink']){echo "danger";}else { echo "success";} ?> btn-xs update" id="<?php echo $sort.$category['Id'] ?>"><?php if($category['hasLink']){echo "<span class='fa fa-minus'></span>";} else {echo "<span class='fa fa-plus'></span>";} ?></button>
 					</td>
 				</tr>
 			</table>
@@ -66,10 +67,15 @@ function writeCategory($categories,$sort){
 <script>
 	//is used to make the menu work
 	$(".linky").on("click",function(){
-		$(this).parent().parent().parent().parent().parent().children(".treeview-menu").each(function(i,element){
+		console.log($(this))
+		var span = this
+		$(this).parent().parent().parent().parent().parent().parent().children(".treeview-menu").each(function(i,element){
 			if($(element).is(":hidden")){
 				$(element).show()
+				$(span).removeClass("fa-angle-left").addClass("fa-angle-down")
+				console.log($(this))
 			} else {
+				$(span).removeClass("fa-angle-down").addClass("fa-angle-left")
 				$(element).hide()
 			}
 		})
@@ -90,11 +96,11 @@ function writeCategory($categories,$sort){
 		});
 		var addClass1	=	"bg-success"
 		var addClass2	=	"btn-danger"
-		var text		=	"Verwijderen"
+		var text		=	"<span class='fa fa-minus'></span>"
 		if($(this).parent().parent().hasClass("bg-success")){
 			addClass1	="bg-danger"
 			addClass2	="btn-success"
-			text		="Toevoegen"
+			text		="<span class='fa fa-plus'></span>"
 		}
 		$(this).removeClass("btn-success").removeClass("btn-danger").addClass(addClass2)
 		$(this).empty().html(text)

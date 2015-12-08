@@ -19,8 +19,8 @@ class Ajax_products extends CI_Controller {
 				$string=$string.'"'.$value['Name'].'",';
 				$string=$string.'"'.$value['Sell_price'].'",';
 				$string=$string.'"'.$value['stock'].'",';
-				$string=$string.'"<a href=\''.base_url("index.php/admin/products/edit")."/".$value['Id'].'\' class=\'btn btn-primary\'><span class=\'fa fa-edit\'></span></a><a href=\''.base_url("index.php/admin/products/addstock")."/".$value['Id'].'\' class=\'btn btn-primary\'><span class=\'fa fa-truck\'></span></a>"';
-			}
+				$string=$string.'"<a href=\''.base_url("index.php/admin/products/edit")."/".$value['Id'].'\' class=\'btn btn-primary\'><span class=\'fa fa-edit\'></span></a><a href=\''.base_url("index.php/admin/products/addstock")."/".$value['Id'].'\' class=\'btn btn-primary\'><span class=\'fa fa-truck\'></span></a><a href=\''.base_url("index.php/admin/categories/link/")."/".$value['Id'].'\' class=\'btn btn-primary\'><span class=\'fa fa-edit\'></span></a>"';
+			}	
 			$string=$string."]]}";
 
 			echo $string;

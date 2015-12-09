@@ -7,6 +7,7 @@
                     <th>Adres</th>
                     <th>Plaats en postcode</th>          
                     <th>Email</th>
+                    <th>Acties</th>
                 </tr>
             </thead>
 	</table>

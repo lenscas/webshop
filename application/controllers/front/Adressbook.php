@@ -25,4 +25,11 @@ class Adressbook extends CI_Controller {
 		$this->load->view("front/adressbook/add",$contentData);
 		$this->load->view("front/defaults/front-footer.php");
 	}
+
+	public function view(){
+
+		$this->load->view("front/adressbook/view");
+		$this->load->view("front/defaults/front-footer.php");
+	
+	}
 }

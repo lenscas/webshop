@@ -25,15 +25,30 @@ class Adressbook_model extends CI_Model {
 		return $query->result_array();
 	}
 	
-	public function editAddress($data,$userId){
+	public function getAdress($id){
+		$this->db->select("*, deliveraddress.Id as placeId,countries.Name as LandName");
+		$this->db->from("deliveraddress");
+		$this->db->where("deliveraddress.Id",$id);
+		$this->db->join("countries","countries.Id=deliveraddress.Land_Id");
+		$query=$this->db->get();
+		$result=$query->row_array();
+		//echo $this->db->last_query();
+		return $result; 
+	}
+	
+	
+	public function editAddress($data,$id){
 		foreach($data as $key=>$value){
 			if(!$value && $key!="SecondName"){
 				return "er waren 1 of meerdere velden niet ingevuld";
 			}
 		}
 		//update the database
-		$this->db->where("Users_Id",$userId);
-		$this->db->update("deliveraddress",$data);
+		//delete here
+		$this->db->insert("deliveraddress",$data);
+		return $this->db->insert_id();
+		//$this->db->where("deliveraddress.Id",$id);
+		//$this->db->update("deliveraddress",$data);
 	}
 
 }

@@ -29,9 +29,9 @@
 					<td>Achternaam</td>
 				</tr>
 				<tr>
-					<td><input type="text"	name="Firstname" values="<?php if(isset($Firstname)){echo $Firstname;} ?>"	></td>
-					<td><input type="text"	name="SecondName" values="<?php if(isset($Secondname)){echo $Secondname;} ?>"	></td>
-					<td><input type="text"	name="LastName"	values="<?php if(isset($Lastname)){echo $LastName;} ?>"	></td>
+					<td><input type="text"	name="Firstname" value="<?php if(isset($Firstname)){echo $Firstname;} ?>"	></td>
+					<td><input type="text"	name="SecondName" value="<?php if(isset($SecondName)){echo $SecondName;} ?>"	></td>
+					<td><input type="text"	name="LastName"	value="<?php if(isset($LastName)){echo $LastName;} ?>"	></td>
 				</tr>
 			</table>
 			<table style="max-width:100%">
@@ -40,16 +40,16 @@
 					<td>Zipcode</td>
 				</tr>
 				<tr>
-					<td><input type="text"	name="City"	values="<?php if(isset($City)){echo $City;} ?>"	></td>
-					<td><input type="text"	name="Zipcode" values="<?php if(isset($Zipcode)){echo $Zipcode;} ?>"	></td>
+					<td><input type="text"	name="City"	value="<?php if(isset($City)){echo $City;} ?>"	></td>
+					<td><input type="text"	name="Zipcode" value="<?php if(isset($Zipcode)){echo $Zipcode;} ?>"	></td>
 				</tr>
 				<tr>
 					<td>Straat</td>
 					<td>Huisnummer</td>
 				</tr>
 				<tr>
-					<td><input type="text"	name="Adress" values="<?php if(isset($Adress)){echo $Adress;} ?>"		></td>
-					<td><input type="text"	name="HomeNumber" values="<?php if(isset($HomeNumber)){echo $HomeNumber;} ?>"	></td>
+					<td><input type="text"	name="Adress" value="<?php if(isset($Adress)){echo $Adress;} ?>"		></td>
+					<td><input type="text"	name="HomeNumber" value="<?php if(isset($HomeNumber)){echo $HomeNumber;} ?>"	></td>
 				</tr>
 			</table>
 			<table style="max-width:100%">
@@ -68,7 +68,7 @@
 					<td>Email address</td>
 				</tr>
 				<tr>
-					<td><input type="text" name="MailAdress" values="<?php if(isset($MailAdress)){echo $MailAdress;} ?>"></td>
+					<td><input type="text" name="MailAdress" value="<?php if(isset($MailAdress)){echo $MailAdress;} ?>"></td>
 				</tr>
 			</table>
 		</div>

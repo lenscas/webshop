@@ -81,8 +81,13 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['cart/ajax/subtract/(:any)']			=	'front/Cart_ajax/subtract/$1';
 		$route['cart/ajax/delete/(:any)']			=	'front/Cart_ajax/delete/$1';
 		$route['cart/ajax/update/(:any)/(:any)']	=	'front/Cart_ajax/update/$1/$2';
-	//add adress
+	//addressbook
+		//add 
 		$route['adress/add']	=	'front/Adressbook/add';
+		//view
+		$route['adress/view']	=	'front/Adressbook/view';	
+		//ajax-call
+		$route['adress/ajax/getAllAdresses']	= 'front/Address_Ajax/Address_user';
 	//orders
 		$route['makeOrder']			=	'front/Orders/makeOrder';
 		$route['order/ajax/view']	=	'front/Order/loadHistory' ;

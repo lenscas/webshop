@@ -31,5 +31,23 @@
 			
 
 		}
+	
+	public function delete_Address($adressId){
+		/*print_r($this->session->userdata());
+		print_r($this->session->has_userdata("userId"));
+		*/
+		if($this->session->has_userdata("userId")){
+			//echo $this->session->userId;
+			$this->load->model("front/Adressbook_model");
+			$adress=$this->Adressbook_model->getAdressById($adressId);
+			if($adress['Users_Id']==$this->session->userId){
+				$this->Adressbook_model->disable($adressId);
+				echo json_encode(array("success"=>true));
+				exit;
+			}
+		}
+		echo json_encode(array("success"=>false));
 	}
+}
+	
 ?>

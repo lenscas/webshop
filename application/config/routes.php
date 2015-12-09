@@ -86,6 +86,8 @@ $route['testHeader/user']	=	'testheader/user';
 		$route['adress/add']	=	'front/Adressbook/add';
 		//view
 		$route['adress/view']	=	'front/Adressbook/view';	
+		//edit
+		$route['adress/edit/(:any)']	=	'front/Adressbook/edit/$1';	
 		//ajax-call
 		$route['adress/ajax/getAllAdresses']	= 'front/Address_Ajax/Address_user';
 	//orders

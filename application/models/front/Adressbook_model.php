@@ -24,4 +24,16 @@ class Adressbook_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+	
+	public function editAddress($data,$userId){
+		foreach($data as $key=>$value){
+			if(!$value && $key!="SecondName"){
+				return "er waren 1 of meerdere velden niet ingevuld";
+			}
+		}
+		//update the database
+		$this->db->where("Users_Id",$userId);
+		$this->db->update("deliveraddress",$data);
+	}
+
 }

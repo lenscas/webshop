@@ -24,7 +24,7 @@
 				$string=$string.'"'.$value["Adress"]." ".$value["HomeNumber"].'",';
 				$string=$string.'"'.$value["City"]." ".$value["Zipcode"].'",';
 				$string=$string.'"'.$value['MailAdress'].'",';
-				$string=$string.'"<a href=\''.base_url("index.php/adress/edit/".$value['placeId']).'\' class=\'btn btn-primary\'><span class=\'fa fa-edit\'></span></a><button id=\'delete'.$value['placeId'].'\' class=\'btn btn-danger \'><span class=\'fa fa-trash\'></span></button>"';
+				$string=$string.'"<a href=\''.base_url("index.php/adress/edit/".$value['placeId']).'\' class=\'btn btn-primary\'><span class=\'fa fa-edit\'></span></a><button id=\'delete'.$value['placeId'].'\' class=\'btn btn-danger delete\'><span class=\'fa fa-trash\'></span></button>"';
 			}
 			$string=$string."]]}";
 

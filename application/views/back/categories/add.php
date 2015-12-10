@@ -6,10 +6,10 @@ function writeCategory($categories,$extraId,$sort){
 
 	?>
 		<li style="background-color:#ffffff;" class="treeview rootcat categoriesNavItem" >
-			<p style="-webkit-user-drag: element; -webkit-user-select:none;" class="linky" id="<?php echo $extraId."child".$count ?>">
+			<p style="-webkit-user-drag: element; -webkit-user-select:none;" class="" id="<?php echo $extraId."child".$count ?>">
 				<i style="color:;" class="fa fa-cross"></i>
 				<span style="color:#3c8dbc;"><?php echo $category["Name"] ?></span>
-				<input type="hidden" value="<?php echo $category["Id"] ?>" name="<?php echo $sort ?>" class="<?php echo $extraId."child".$count."input" ?>">
+				<input type="hidden" value="<?php echo $category["Id"] ?>" name="<?php echo $sort ?>" class="<?php echo $extraId."child".$count."input" ?>"><span class="linky fa fa-angle-left" style="cursor:pointer"></span>
 			</p>
 	<?php 
 		if(isset($category["subCatergory"])){
@@ -179,10 +179,13 @@ $(document).on("dragend","p",function(){
 
 <script>
 	$(".linky").on("click",function(){
-		$(this).parent().children(".treeview-menu").each(function(i,element){
+		var angle=this
+		$(this).parent().parent().children(".treeview-menu").each(function(i,element){
 			if($(element).is(":hidden")){
+				$(angle).removeClass("fa-angle-left").addClass("fa-angle-down")
 				$(element).show()
 			} else {
+				$(angle).removeClass("fa-angle-down").addClass("fa-angle-left")
 				$(element).hide()
 			}
 		})

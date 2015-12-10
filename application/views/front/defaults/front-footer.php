@@ -7,11 +7,14 @@
 			 //preventDefault();
 		}
 		console.log($(this).parent().parent())
+		var angle = this
 		$(this).parent().parent().children(".treeview-menu").each(function(i,element){
 				console.log(element)
 				if($(element).is(":hidden")){
+					$(angle).removeClass("fa-angle-left").addClass("fa-angle-down")
 					$(element).show()
 				} else {
+					$(angle).removeClass("fa-angle-down").addClass("fa-angle-left")
 					$(element).hide()
 				}
 			

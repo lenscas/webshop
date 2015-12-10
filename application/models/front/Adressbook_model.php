@@ -58,7 +58,7 @@ class Adressbook_model extends CI_Model {
 			}
 		}
 		//update the database
-		//delete here
+		$this->disable($id);
 		$this->db->insert("deliveraddress",$data);
 		return $this->db->insert_id();
 		//$this->db->where("deliveraddress.Id",$id);

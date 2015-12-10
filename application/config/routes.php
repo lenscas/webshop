@@ -89,7 +89,8 @@ $route['testHeader/user']	=	'testheader/user';
 		//edit
 		$route['adress/edit/(:any)']	=	'front/Adressbook/edit/$1';	
 		//ajax-call
-		$route['adress/ajax/getAllAdresses']	= 'front/Address_Ajax/Address_user';
+		$route['adress/ajax/getAllAdresses']	=	'front/Address_Ajax/Address_user';
+		$route['adress/ajax/delete/(:any)']		=	'front/Address_Ajax/delete_Address/$1';
 	//orders
 		$route['makeOrder']			=	'front/Orders/makeOrder';
 		$route['order/ajax/view']	=	'front/Order/loadHistory' ;

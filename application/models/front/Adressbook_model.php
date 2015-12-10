@@ -20,9 +20,23 @@ class Adressbook_model extends CI_Model {
 		$this->db->select("*, deliveraddress.Id as placeId,countries.Name as LandName");
 		$this->db->from("deliveraddress");
 		$this->db->where("Users_Id",$userId);
+		$this->db->where("deliveraddress.active",1);
 		$this->db->join("countries","countries.Id=deliveraddress.Land_Id");
 		$query=$this->db->get();
 		return $query->result_array();
+	}
+
+	public function getAdressById($adressId){
+		$this->db->select("*, deliveraddress.Id as placeId,countries.Name as LandName");
+		$this->db->from("deliveraddress");
+		$this->db->where("deliveraddress.Id",$adressId);
+		$this->db->join("countries","countries.Id=deliveraddress.Land_Id");
+		$query=$this->db->get();
+		return $query->row_array();
+	}
+	public function disable($adressId){
+		$this->db->where("Id",$adressId);
+		$this->db->update("deliveraddress",array("active"=>"0"));
 	}
 	
 	public function getAdress($id){

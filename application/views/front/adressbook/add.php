@@ -29,9 +29,9 @@
 					<td>Achternaam</td>
 				</tr>
 				<tr>
-					<td><input type="text"	name="Firstname"	></td>
-					<td><input type="text"	name="SecondName"	></td>
-					<td><input type="text"	name="LastName"		></td>
+					<td><input type="text"	name="Firstname" value="<?php if(isset($Firstname)){echo $Firstname;} ?>"	></td>
+					<td><input type="text"	name="SecondName" value="<?php if(isset($SecondName)){echo $SecondName;} ?>"	></td>
+					<td><input type="text"	name="LastName"	value="<?php if(isset($LastName)){echo $LastName;} ?>"	></td>
 				</tr>
 			</table>
 			<table style="max-width:100%">
@@ -40,16 +40,16 @@
 					<td>Zipcode</td>
 				</tr>
 				<tr>
-					<td><input type="text"	name="City"		></td>
-					<td><input type="text"	name="Zipcode"	></td>
+					<td><input type="text"	name="City"	value="<?php if(isset($City)){echo $City;} ?>"	></td>
+					<td><input type="text"	name="Zipcode" value="<?php if(isset($Zipcode)){echo $Zipcode;} ?>"	></td>
 				</tr>
 				<tr>
 					<td>Straat</td>
 					<td>Huisnummer</td>
 				</tr>
 				<tr>
-					<td><input type="text"	name="Adress"		></td>
-					<td><input type="text"	name="HomeNumber"	></td>
+					<td><input type="text"	name="Adress" value="<?php if(isset($Adress)){echo $Adress;} ?>"		></td>
+					<td><input type="text"	name="HomeNumber" value="<?php if(isset($HomeNumber)){echo $HomeNumber;} ?>"	></td>
 				</tr>
 			</table>
 			<table style="max-width:100%">
@@ -68,7 +68,7 @@
 					<td>Email address</td>
 				</tr>
 				<tr>
-					<td><input type="text" name="MailAdress"></td>
+					<td><input type="text" name="MailAdress" value="<?php if(isset($MailAdress)){echo $MailAdress;} ?>"></td>
 				</tr>
 			</table>
 		</div>

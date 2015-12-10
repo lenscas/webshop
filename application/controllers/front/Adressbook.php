@@ -32,4 +32,31 @@ class Adressbook extends CI_Controller {
 		$this->load->view("front/defaults/front-footer.php");
 	
 	}
+
+	public function edit($id){
+
+		if(! $this->session->has_userData("userId")){
+			redirect("home");
+		}
+		$this->load->model("front/Adressbook_model");
+		$oldData=$this->Adressbook_model->getAdress($id);
+		if(!$oldData['Users_Id']==$this->session->userId){
+			redirect("adress/view");
+		}
+		if($this->input->post()){
+			$updateData=$this->input->post();
+			$updateData['Users_Id']=$this->session->userId;
+			redirect("adress/edit/".$this->Adressbook_model->editAddress($updateData,$id));
+		}
+		$data=$this->Adressbook_model->getAdress($id);
+		$data["countries"]=$this->Adressbook_model->getCountries();
+		
+		$data["error"]=null;
+		$this->load->view("front/adressbook/add",$data);
+		$this->load->view('front/defaults/front-footer.php');
+
+
+		
+	}
+
 }
